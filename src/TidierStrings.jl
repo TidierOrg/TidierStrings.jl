@@ -1,11 +1,26 @@
+module TidierStrings
 export str_detect, str_replace, str_replace_all, str_removal_all, str_remove, str_count, str_squish, str_equal, str_to_upper, str_to_lower, str_split, str_subset
 
 
 
 """
-$docstring_str_detect
-"""
+    str_detect(column::String, pattern::Union{String, Regex})
 
+Check if `pattern` exists in the `column`. If the pattern is a string, this function
+checks for exact matches. If the pattern is a regex, this function checks for regex matches.
+
+# Arguments
+- `column::String`: the string to search within.
+- `pattern::Union{String, Regex}`: the pattern to search for.
+
+# Returns
+- `Bool`: `true` if the pattern is found in the column, `false` otherwise.
+
+# Examples
+```julia
+str_detect("hello world", "hello") # returns true
+str_detect("hello world", r"world$") # returns true
+"""
 function str_detect(column::String, pattern::Union{String, Regex})
     if pattern isa String
         or_groups = split(pattern, '|')
@@ -30,11 +45,27 @@ function str_detect(column::String, pattern::Union{String, Regex})
     end
 end
 
-
 """
-$docstring_str_replace
-"""
+`str_replace`
 
+    str_replace(column::String, pattern::Union{String, Regex}, replacement::String)
+
+Replace the first occurrence of `pattern` in `column` with `replacement`. If the pattern is a string, 
+this function replaces exact matches. If the pattern is a regex, this function replaces regex matches.
+
+# Arguments
+- `column::String`: the string in which to replace.
+- `pattern::Union{String, Regex}`: the pattern to replace.
+- `replacement::String`: the string to replace the pattern with.
+
+# Returns
+- `String`: the updated string with the first instance of the pattern replaced.
+
+# Examples
+```julia
+str_replace("hello world", "hello", "hi") # returns "hi world"
+str_replace("hello world", r"world$", "there") # returns "hello there"
+"""
 function str_replace(column::String, pattern::Union{String, Regex}, replacement::String)
     if pattern isa String
         patterns = split(pattern, '|')
@@ -59,14 +90,28 @@ function str_replace(column::String, pattern::Union{String, Regex}, replacement:
 end
 
 
+"""
+`str_replace_all`
 
+    str_replace_all(column::String, pattern::Union{String, Regex}, replacement::String)
 
+Replace all occurrences of `pattern` in `column` with `replacement`. If the pattern is a string, 
+this function replaces exact matches. If the pattern is a regex, this function replaces regex matches.
+
+# Arguments
+- `column::String`: the string in which to replace.
+- `pattern::Union{String, Regex}`: the pattern to replace.
+- `replacement::String`: the string to replace the pattern with.
+
+# Returns
+- `String`: the updated string with all instances of the pattern replaced.
+
+# Examples
+```julia
+str_replace_all("hello world world", "world", "there") # returns "hello there there"
+str_replace_all("hello world world", r"world$", "there") # returns "hello world there"
 
 """
-$docstring_str_replace_all
-"""
-
-
 function str_replace_all(column::String, pattern::Union{String, Regex}, replacement::String)
     if pattern isa String
         patterns = split(pattern, '|')
@@ -82,11 +127,26 @@ function str_replace_all(column::String, pattern::Union{String, Regex}, replacem
     return column
 end
 
+""" 
+`str_remove`
 
-"""
-$docstring_str_remove
-"""
+    str_remove(column::String, pattern::Union{String, Regex})
 
+Remove the first occurrence of `pattern` from `column`. If the pattern is a string, this function
+removes exact matches. If the pattern is a regex, this function removes regex matches.
+
+# Arguments
+- `column::String`: the string from which to remove.
+- `pattern::Union{String, Regex}`: the pattern to remove.
+
+# Returns
+- `String`: the updated string with the first instance of the pattern removed.
+
+# Examples
+```julia
+str_remove("hello world", "hello") # returns " world"
+str_remove("hello world", r"^hello") # returns " world"
+"""
 function str_remove(column::String, pattern::Union{String, Regex})
     if pattern isa String
         patterns = split(pattern, '|')
@@ -109,11 +169,26 @@ function str_remove(column::String, pattern::Union{String, Regex})
     column = replace(column, r"\s+" => " ")
     return column
 end
-
 """
-$docstring_str_remove_all
-"""
+`str_remove_all`
 
+    str_remove_all(column::String, pattern::Union{String, Regex})
+
+Remove all occurrences of `pattern` from `column`. If the pattern is a string, this function
+removes exact matches. If the pattern is a regex, this function removes regex matches.
+
+# Arguments
+- `column::String`: the string from which to remove.
+- `pattern::Union{String, Regex}`: the pattern to remove.
+
+# Returns
+- `String`: the updated string with all instances of the pattern removed.
+
+# Examples
+```julia
+str_remove_all("hello world hello", "hello") # returns " world "
+str_remove_all("hello world hello", r"hello") # returns " world "
+"""
 function str_remove_all(column::String, pattern::Union{String, Regex})
     if pattern isa String
         patterns = split(pattern, '|')
@@ -128,17 +203,27 @@ function str_remove_all(column::String, pattern::Union{String, Regex})
     column = replace(column, r"\s+" => " ")
     return column
 end
+"""
+`str_count`
 
+    str_count(column::String, pattern::Union{String, Regex})
 
+Count the number of occurrences of `pattern` in `column`. If the pattern is a string, this function
+counts exact matches. If the pattern is a regex, this function counts regex matches.
+
+# Arguments
+- `column::String`: the string in which to count.
+- `pattern::Union{String, Regex}`: the pattern to count.
+
+# Returns
+- `Int`: the number of instances of the pattern in the string.
+
+# Examples
+```julia
+str_count("hello world hello", "hello") # returns 2
+str_count("hello world hello", r"hello") # returns 2
 
 """
-$docstring_str_count
-"""
-
-# counts the number of matches in a string
-# Using collect() to transform the entire iterator into an array could potentially use a lot of 
-#memory if there are a large number of matches, so use this with caution when working with large data.
-# str_count inside @mutate string be exact match. wont catch 0 in 2018 for example. or 2018 in 2018-22
 
 function str_count(column::String, pattern::Union{String, Regex})
     if pattern isa String
@@ -148,13 +233,23 @@ function str_count(column::String, pattern::Union{String, Regex})
         return length(collect(eachmatch(pattern, column)))
     end
 end
-
-
-
 """
-$docstring_str_squish
-"""
+`str_squish`
 
+    str_squish(column::String)
+
+Remove leading, trailing, and consecutive whitespace from `column`.
+
+# Arguments
+- `column::String`: the string to squish.
+
+# Returns
+- `String`: the squished string.
+
+# Examples
+```julia
+str_squish("  hello  world  ") # returns "hello world"
+"""
 
 function str_squish(column::String)
     # Remove leading and trailing white spaces
@@ -163,10 +258,26 @@ function str_squish(column::String)
     return replace(squished, r"\s+" => s" ")
 end
 
-"""
-$docstring_str_equal
-"""
 
+"""
+`str_equal`
+
+    str_equal(column1::String, column2::String)
+
+Check if `column1` is exactly equal to `column2`.
+
+# Arguments
+- `column1::String`: the first string to compare.
+- `column2::String`: the second string to compare.
+
+# Returns
+- `Bool`: `true` if the strings are equal, `false` otherwise.
+
+# Examples
+```julia
+str_equal("hello world", "hello world") # returns true
+str_equal("Hello world", "hello world") # returns false
+"""
 
 function str_equal(column::String, pattern::Union{String, Regex})
     if pattern isa String
@@ -178,24 +289,68 @@ function str_equal(column::String, pattern::Union{String, Regex})
 end
 
 """
-$docstring_str_to_lower
-"""
+`str_to_upper`
 
-function str_to_lower(s)
-    return lowercase(s)
-end
+    str_to_upper(column::String)
 
-"""
-$docstring_str_to_upper
+Convert all characters in `column` to uppercase.
+
+# Arguments
+- `column::String`: the string to convert.
+
+# Returns
+- `String`: the string converted to uppercase.
+
+# Examples
+```julia
+str_to_upper("hello world") # returns "HELLO WORLD"
 """
 
 function str_to_upper(s)
     return uppercase(s)
 end
-
-### two bonuses.. not totally sure what these ones are used for.
 """
-$docstring_str_split
+`str_to_lower`
+
+    str_to_lower(column::String)
+
+Convert all characters in `column` to lowercase.
+
+# Arguments
+- `column::String`: the string to convert.
+
+# Returns
+- `String`: the string converted to lowercase.
+
+# Examples
+```julia
+str_to_lower("HELLO WORLD") # returns "hello world"
+"""
+
+function str_to_lower(s)
+    return lowercase(s)
+end
+"""
+`str_split`
+
+    str_split(column::String, delimiter::String, limit::Int=-1)
+
+Split `column` into substrings using `delimiter` as the delimiter string. 
+If `limit` is provided and positive, the returned array will contain a maximum of `limit` elements 
+with the last element containing the rest of `string`.
+
+# Arguments
+- `column::String`: the string to split.
+- `delimiter::String`: the delimiter to use.
+- `limit::Int=-1`: the maximum number of split elements.
+
+# Returns
+- `Array{SubString{String},1}`: an array of substrings.
+
+# Examples
+```julia
+str_split("hello world", " ") # returns ["hello", "world"]
+str_split("hello world", " ", 1) # returns ["hello"]
 """
 
 function str_split(column::String, pattern::Union{String, Regex}, n::Int=2)
@@ -203,12 +358,26 @@ function str_split(column::String, pattern::Union{String, Regex}, n::Int=2)
     return split_parts[1:min(end, n)]
 end
 
-
 """
-$docstring_str_subset
-"""
+`str_subset`
 
-# I dont fully understand why you would use this over str_detect, or how to tease out and test functiality differences
+    str_subset(column::String, pattern::Union{String, Regex})
+
+Return the substrings of `column` that match `pattern`. If the pattern is a string, 
+this function matches exact matches. If the pattern is a regex, this function matches regex matches.
+
+# Arguments
+- `column::String`: the string to search within.
+- `pattern::Union{String, Regex}`: the pattern to search for.
+
+# Returns
+- `Array{SubString{String},1}`: an array of matched substrings.
+
+# Examples
+```julia
+str_subset("hello world", "hello") # returns ["hello"]
+str_subset("hello world", r"\w+") # returns ["hello", "world"]
+"""
 
 function str_subset(column::String, pattern::Union{String, Regex})
     if pattern isa String
@@ -227,3 +396,5 @@ function str_subset(column::String, pattern::Union{String, Regex})
     end
 end
 
+
+end 
