@@ -19,9 +19,12 @@ checks for exact matches. If the pattern is a regex, this function checks for re
 # Examples
 ```julia
 str_detect("hello world", "hello") # returns true
-str_detect("hello world", r"world$") # returns true
+str_detect("hello world", r"world") # returns true
 """
-function str_detect(column::String, pattern::Union{String, Regex})
+function str_detect(column::Union{Missing, String}, pattern::Union{String, Regex})
+    if ismissing(column)
+        return(column)
+    end 
     if pattern isa String
         or_groups = split(pattern, '|')
 
@@ -64,9 +67,13 @@ this function replaces exact matches. If the pattern is a regex, this function r
 # Examples
 ```julia
 str_replace("hello world", "hello", "hi") # returns "hi world"
-str_replace("hello world", r"world$", "there") # returns "hello there"
+str_replace("hello world", r"world", "there") # returns "hello there"
 """
-function str_replace(column::String, pattern::Union{String, Regex}, replacement::String)
+function str_replace(column::Union{Missing, String}, pattern::Union{String, Regex}, replacement::String)
+    if ismissing(column)
+        return(column)
+    end 
+
     if pattern isa String
         patterns = split(pattern, '|')
         first_occurrences = [(p, findfirst(p, column)) for p in patterns]
@@ -109,10 +116,14 @@ this function replaces exact matches. If the pattern is a regex, this function r
 # Examples
 ```julia
 str_replace_all("hello world world", "world", "there") # returns "hello there there"
-str_replace_all("hello world world", r"world$", "there") # returns "hello world there"
+str_replace_all("hello world world", r"world", "there") # returns "hello world there"
 
 """
-function str_replace_all(column::String, pattern::Union{String, Regex}, replacement::String)
+function str_replace_all(column::Union{Missing, String}, pattern::Union{String, Regex}, replacement::String)
+    if ismissing(column)
+        return(column)
+    end 
+
     if pattern isa String
         patterns = split(pattern, '|')
         for p in patterns
@@ -147,7 +158,11 @@ removes exact matches. If the pattern is a regex, this function removes regex ma
 str_remove("hello world", "hello") # returns " world"
 str_remove("hello world", r"^hello") # returns " world"
 """
-function str_remove(column::String, pattern::Union{String, Regex})
+function str_remove(column::Union{Missing, String}, pattern::Union{String, Regex})
+    if ismissing(column)
+        return(column)
+    end 
+
     if pattern isa String
         patterns = split(pattern, '|')
         first_occurrences = [(p, findfirst(p, column)) for p in patterns]
@@ -189,7 +204,11 @@ removes exact matches. If the pattern is a regex, this function removes regex ma
 str_remove_all("hello world hello", "hello") # returns " world "
 str_remove_all("hello world hello", r"hello") # returns " world "
 """
-function str_remove_all(column::String, pattern::Union{String, Regex})
+function str_remove_all(column::Union{Missing, String}, pattern::Union{String, Regex})
+    if ismissing(column)
+        return(column)
+    end 
+
     if pattern isa String
         patterns = split(pattern, '|')
         for p in patterns
@@ -225,7 +244,11 @@ str_count("hello world hello", r"hello") # returns 2
 
 """
 
-function str_count(column::String, pattern::Union{String, Regex})
+function str_count(column::Union{Missing, String}, pattern::Union{String, Regex})
+    if ismissing(column)
+        return(column)
+    end 
+    
     if pattern isa String
         return count(occursin(pattern), split(column))
     else
@@ -251,7 +274,10 @@ Remove leading, trailing, and consecutive whitespace from `column`.
 str_squish("  hello  world  ") # returns "hello world"
 """
 
-function str_squish(column::String)
+function str_squish(column::Union{Missing, String})
+    if ismissing(column)
+        return(column)
+    end
     # Remove leading and trailing white spaces
     squished = strip(column)
     # Replace any sequence of whitespace characters with a single space
@@ -279,7 +305,11 @@ str_equal("hello world", "hello world") # returns true
 str_equal("Hello world", "hello world") # returns false
 """
 
-function str_equal(column::String, pattern::Union{String, Regex})
+function str_equal(column::Union{Missing, String}, pattern::Union{String, Regex})
+    if ismissing(column)
+        return(column)
+    end 
+    
     if pattern isa String
         return column == pattern
     else
@@ -306,9 +336,14 @@ Convert all characters in `column` to uppercase.
 str_to_upper("hello world") # returns "HELLO WORLD"
 """
 
-function str_to_upper(s)
-    return uppercase(s)
+function str_to_upper(s::Union{String, Missing})
+    if ismissing(s)
+        return(s)
+    else
+        return uppercase(s)
+    end
 end
+
 """
 `str_to_lower`
 
@@ -327,8 +362,12 @@ Convert all characters in `column` to lowercase.
 str_to_lower("HELLO WORLD") # returns "hello world"
 """
 
-function str_to_lower(s)
-    return lowercase(s)
+function str_to_lower(s::Union{String, Missing})
+    if ismissing(s)
+        return(s)
+    else
+        return lowercase(s)
+    end
 end
 """
 `str_split`
@@ -353,7 +392,10 @@ str_split("hello world", " ") # returns ["hello", "world"]
 str_split("hello world", " ", 1) # returns ["hello"]
 """
 
-function str_split(column::String, pattern::Union{String, Regex}, n::Int=2)
+function str_split(column::Union{Missing, String}, pattern::Union{String, Regex}, n::Int=2)
+    if ismissing(column)
+        return(column)
+    end
     split_parts = split(column, pattern)
     return split_parts[1:min(end, n)]
 end
@@ -379,7 +421,12 @@ str_subset("hello world", "hello") # returns ["hello"]
 str_subset("hello world", r"\w+") # returns ["hello", "world"]
 """
 
-function str_subset(column::String, pattern::Union{String, Regex})
+function str_subset(column::Union{Missing, String}, pattern::Union{String, Regex})
+    if ismissing(column)
+        return(column)
+    end 
+    
+    
     if pattern isa String
         or_groups = split(pattern, '|')
 
