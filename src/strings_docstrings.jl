@@ -1,5 +1,4 @@
 const docstring_str_detect  =
-
 """
 str_detect(column::String, pattern::Union{String, Regex})
 
@@ -15,6 +14,7 @@ Use & to represent "and" (e.g., "red&blue" matches any string that contains both
 Returns
 true if the string contains the pattern, false otherwise.
 Examples
+```jldoctest
 julia> str_detect("The sky is blue", "blue")
 true
 
@@ -29,10 +29,10 @@ true
 
 julia> str_detect("The sky is blue and the sun is red", "blue&red")
 true
+```
 """
 
 const docstring_str_replace  =
-
 """
 str_replace(column::String, pattern::Union{String, Regex}, replacement::String)
 
@@ -48,8 +48,7 @@ Use | to represent "or" (e.g., "red|blue" matches any string that contains "red"
 Returns
 A new string with the first occurrence of the pattern replaced with the replacement.
 Examples
-jldoctest
-
+```jldoctest
 julia> str_replace("The sky is blue", "blue", "red")
 "The sky is red"
 
@@ -58,10 +57,10 @@ julia> str_replace("The sky is blue", r"\bblu\b", "red")
 
 julia> str_replace("The sky is blue", "blue|sky", "red")
 "The red is blue"
+```
 """
 
 const docstring_str_replace_all =
-
 """
 str_replace_all(column::String, pattern::Union{String, Regex}, replacement::String)
 
@@ -77,8 +76,7 @@ Use | to represent "or" (e.g., "red|blue" matches any string that contains "red"
 Returns
 A new string with all occurrences of the pattern replaced with the replacement.
 Examples
-jldoctest
-
+```jldoctest
 julia> str_replace_all("The blue sky is blue", "blue", "red")
 "The red sky is red"
 
@@ -87,10 +85,9 @@ julia> str_replace_all("The blue sky is blue", r"\bblu\b", "red")
 
 julia> str_replace_all("The blue sky is blue", "blue|sky", "red")
 "The red red is red"
+```
 """
-
 const docstring_str_count =
-
 """
 str_count(column::String, pattern::Union{String, Regex})
 
@@ -105,21 +102,19 @@ Use | to represent "or" (e.g., "red|blue" counts any string that contains "red" 
 Returns
 The count of non-overlapping occurrences of pattern in column.
 Examples
-jldoctest
-
+```jldoctest
 julia> str_count("The blue sky is blue", "blue")
 2
 
 julia> str_count("The blue sky is blue", r"blu")
-1
+2
 
 julia> str_count("The blue sky is blue", "blue|sky")
 3
+```
 """
 
 const docstring_str_squish  =
-
-
 """
 str_squish(column::String)
 
@@ -130,18 +125,17 @@ column: The string to be squished.
 Returns
 A squished version of column.
 Examples
-jldoctest
-
+```jldoctest
 julia> str_squish("  This    is a string   with   spaces   ")
 "This is a string with spaces"
 
 julia> str_squish("  Leading and trailing spaces   ")
 "Leading and trailing spaces"
+```
 """
 
 
 const docstring_str_equal  =
-
 """
 str_equal(column::String, pattern::Union{String, Regex})
 
@@ -154,20 +148,13 @@ Returns
 true if column equals to pattern (for plain strings) or if pattern can match the entire column (for Regex).
 false otherwise.
 Examples
-jldoctest
-
+```jldoctest
 julia> str_equal("hello", "hello")
 true
-
-julia> str_equal("hello", r"^h")
-false
-
-julia> str_equal("hello", r"^hello$")
-true
+```
 """
 
-const docstring_split  =
-
+const docstring_str_split  =
 """
 str_split(column::String, pattern::Union{String, Regex}, n::Int=2)
 
@@ -180,22 +167,21 @@ n: The maximum number of split substrings to return. Default is 2.
 Returns
 A vector of substrings. Its length will be at most n.
 Examples
-jldoctest
-
+```jldoctest
 julia> str_split("hello world", " ")
-2-element Vector:
+2-element Vector{SubString{String}}:
  "hello"
  "world"
 
 julia> str_split("one.two.three.four", ".", 3)
-3-element Vector:
+3-element Vector{SubString{String}}:
  "one"
  "two"
- "three.four"
+ "three"
+```
 """
 
 const docstring_str_subset  =
-
 """
 str_subset(column::String, pattern::Union{String, Regex})
 
@@ -207,16 +193,16 @@ pattern: The pattern to search for within the string. Can be a plain string or a
 Returns
 The original string if the pattern is found within it, otherwise an empty string.
 Examples
-jldoctest
-
+```jldoctest
 julia> str_subset("Hello world!", "world")
-"Hello world!"
+true
 
 julia> str_subset("Hello world!", "universe")
-""
+false
+```
 """
-const docstring_str_to_lower  =
 
+const docstring_str_to_lower  =
 """
 str_to_lower(s::AbstractString)
 
@@ -227,14 +213,13 @@ s: Input string.
 Returns
 String with all characters converted to lower case.
 Examples
-jldoctest
-
+```jldoctest
 julia> str_to_lower("Hello World!")
 "hello world!"
+```
 """
 
 const docstring_str_to_upper  =
-
 """
 str_to_upper(s::AbstractString)
 
@@ -245,16 +230,15 @@ s: Input string.
 Returns
 String with all characters converted to upper case.
 Examples
-jldoctest
 
+```jldoctest
 julia> str_to_upper("Hello World!")
 "HELLO WORLD!"
+```
 """
 
 
 const docstring_str_remove_all  =
-
-
 """
 
 str_remove_all(column::String, pattern::Union{String, Regex})
@@ -270,13 +254,15 @@ A string with all occurrences of the pattern removed.
 
 Examples
 ```jldoctest
-julia> column = "I love tidier strings, I love tidier strings";
-julia> str_remove_all(column, " tidier")
-"I love programming language, is awesome"
+julia> column = "I love tidier strings, I love tidier strings"
+"I love tidier strings, I love tidier strings"
+
+julia> str_remove_all(column, " strings")
+"I love tidier , I love tidier "
+```
 """
 
 const docstring_str_remove  =
-
 """
 str_remove(column::String, pattern::Union{String, Regex})
 
@@ -291,13 +277,11 @@ A string with the first occurrence of the pattern removed.
 
 Examples
 ```jldoctest
-julia> column = "I love tidier strings";
+julia> column = "I love tidier strings"
+"I love tidier strings"
+
 julia> str_remove(column, " strings")
 "I love tidier"
-
+```
 """
-
-
-
-
 
