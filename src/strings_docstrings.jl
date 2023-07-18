@@ -277,11 +277,11 @@ A string with the first occurrence of the pattern removed.
 
 Examples
 ```jldoctest
-julia> column = "I love tidier strings"
-"I love tidier strings"
+julia> column = "I love tidier strings strings"
+"I love tidier strings strings"
 
 julia> str_remove(column, " strings")
-"I love tidier"
+"I love tidier strings"
 ```
 """
 
