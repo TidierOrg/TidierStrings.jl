@@ -154,33 +154,6 @@ true
 ```
 """
 
-const docstring_str_split  =
-"""
-str_split(column::String, pattern::Union{String, Regex}, n::Int=2)
-
-Splits a string into a vector of substrings at each match of the pattern. The length of the output vector is limited to n.
-
-Arguments
-column: The string to be split.
-pattern: The pattern to split on. Can be a plain string or a Regex.
-n: The maximum number of split substrings to return. Default is 2.
-Returns
-A vector of substrings. Its length will be at most n.
-Examples
-```jldoctest
-julia> str_split("hello world", " ")
-2-element Vector{SubString{String},1}:
- "hello"
- "world"
-
-julia> str_split("one.two.three.four", ".", 3)
-3-element Vector{SubString{String},1}:
- "one"
- "two"
- "three"
-```
-"""
-
 const docstring_str_subset  =
 """
 str_subset(column::String, pattern::Union{String, Regex})

@@ -228,16 +228,16 @@ function str_to_lower(s::Union{String, Missing})
 end
 
 
-"""
-$docstring_str_split
-"""
-function str_split(column::Union{Missing, String}, pattern::Union{String, Regex}, n::Int=2)
-    if ismissing(column)
-        return(column)
-    end
-    split_parts = split(column, pattern)
-    return split_parts[1:min(end, n)]
-end
+#"""
+#$docstring_str_split
+#"""
+#function str_split(column::Union{Missing, String}, pattern::Union{String, Regex}, n::Int=2)
+#    if ismissing(column)
+#        return(column)
+#    end
+#    split_parts = split(column, pattern)
+#    return split_parts[1:min(end, n)]
+#end
 
 
 
