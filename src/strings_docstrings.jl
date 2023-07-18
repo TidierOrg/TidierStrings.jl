@@ -169,12 +169,12 @@ A vector of substrings. Its length will be at most n.
 Examples
 ```jldoctest
 julia> str_split("hello world", " ")
-2-element Vector{SubString{String}}:
+2-element Vector{SubString{String},1}:
  "hello"
  "world"
 
 julia> str_split("one.two.three.four", ".", 3)
-3-element Vector{SubString{String}}:
+3-element Vector{SubString{String},1}:
  "one"
  "two"
  "three"
