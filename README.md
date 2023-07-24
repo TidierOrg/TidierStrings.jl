@@ -2,7 +2,7 @@
 
 ## What is TidierStrings.jl
 
-`TidierStrings.jl `is a 100% Julia implementation of the R lubridate package. 
+`TidierStrings.jl `is a 100% Julia implementation of the R stringr package. 
 
 `TidierStrings.jl` has one main goal: to implement stringr's straightforward syntax and of ease of use for Julia users. While this package was develeoped to work seamelessly with `Tidier.jl` fucntions and macros, it can also work as a indepentenly as a standalone package. 
 
@@ -19,17 +19,17 @@ Pkg.add(url = "https://github.com/TidierOrg/TidierStrings.jl.git")
 
 TidierStrings.jl currently supports: 
 
-`str_detect()`
-`str_replace()`
-`str_replace_all()`
-`str_removal_all()`
-`str_remove()`
-`str_count()`
-`str_squish()`
-`str_equal()`
-`str_to_upper()`
-`str_to_lower()`
-`str_subset()`
+-`str_detect()`
+-`str_replace()`
+-`str_replace_all()`
+-`str_removal_all()`
+-`str_remove()`
+-`str_count()`
+-`str_squish()`
+-`str_equal()`
+-`str_to_upper()`
+-`str_to_lower()`
+-`str_subset()`
 
 ## Examples
 
