@@ -19,21 +19,21 @@ Pkg.add(url = "https://github.com/TidierOrg/TidierStrings.jl.git")
 
 TidierStrings.jl currently supports: 
 
--`str_detect()`
--`str_replace()`
--`str_replace_all()`
--`str_removal_all()`
--`str_remove()`
--`str_count()`
--`str_squish()`
--`str_equal()`
--`str_to_upper()`
--`str_to_lower()`
--`str_subset()`
+- `str_detect()`
+- `str_replace()`
+- `str_replace_all()`
+- `str_removal_all()`
+- `str_remove()`
+- `str_count()`
+- `str_squish()`
+- `str_equal()`
+- `str_to_upper()`
+- `str_to_lower()`
+- `str_subset()`
 
 ## Examples
 
-```
+```julia
 using Tidier
 using TidierStrings
 df = DataFrame(
@@ -65,7 +65,8 @@ df = DataFrame(
 ```
 
 `str_squish()`: Removes leading and trailing white spaces from a string and also replaces consecutive white spaces in between words with a single space. It will also remove new lines.
-```
+
+```julia
 df = @chain df begin
     @mutate(City = str_squish(City))
 end
@@ -90,7 +91,8 @@ end
 #### `str_detect()`
 'str_detect()' checks if a pattern exists in a string. It takes a string and a pattern as arguments and returns a boolean indicating the presence of the pattern in the string. This can be used inside of `@filter`, `@mutate`, `if_else()` and `case_when()`. `str_detect` supports logical operators | and &. 
  case_when() with filter() and str_detect()
-```
+
+```julia
 @chain df begin
     @mutate(Occupation = if_else(str_detect(Occupation, "Doctor | Physician"), "Physician", Occupation))
     @filter(str_detect(Description, "artist | doctor"))
@@ -105,7 +107,7 @@ end
    2 │ Charlie  San Antonio 1234567890  Final Artist  Charlie is an artist in Chicago
 ```
 
-```
+```julia
 @chain df begin
     @mutate(state = case_when(str_detect(City, "NYC | New York") => "NY", 
                               str_detect(City, "LA | Los Angeles | San & Jose") => "CA", 
@@ -130,7 +132,7 @@ end
 #### `str_replace()` 
 Replaces the first occurrence of a pattern in a string with a specified text. Takes a string, pattern to search for, and the replacement text as arguments. It also supports the use of regex and logical operator | . This is in contrast to str_replace_all() which will replace each occurence of a match within a string.
 
-```
+```julia
 @chain df begin
   @mutate(City = str_replace(City, r"\s*20\d{2}-\d{2,4}\s*", " ####-## "))
   @mutate(Description = str_replace(Description, "is | a", "will become "))
@@ -153,8 +155,9 @@ end
 
 
 #### `str_remove` and `str_remove_all` 
-These remove the first match occurence or all occurences, respectively
-```
+These remove the first match occurrence or all occurences, respectively.
+
+```julia
 @chain df begin
     @mutate(split = str_remove_all(Description, "is"))
 end
@@ -176,7 +179,8 @@ end
 
 #### `str_equal()`
 Checks if two strings are exactly the same. Takes two strings as arguments and returns a boolean indicating whether the strings are identical.
-```
+
+```julia
 @chain df begin
     @mutate(Same_City = case_when(str_equal(City, Occupation) => "Yes", 
                                   true => "No"))
@@ -196,13 +200,15 @@ end
 ```
 
 #### `str_to_upper` and `str_to_lower`
-These will take a string and convert it to all uppercase or lowercase
-```
+These will take a string and convert it to all uppercase or lowercase.
+
+```julia
 @chain df begin
     @mutate(Names = str_to_upper(Names))
     @select(Names)
 end
 ```
+
 ```
 7×1 DataFrame
  Row │ Names   
