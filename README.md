@@ -1,4 +1,4 @@
-# TidierStrings
+# TidierStrings.jl
 
 ## What is TidierStrings.jl
 
