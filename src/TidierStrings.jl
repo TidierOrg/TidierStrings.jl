@@ -1,9 +1,8 @@
 module TidierStrings
+
 export str_detect, str_replace, str_replace_all, str_remove_all, str_remove, str_count, str_squish, str_equal, str_to_upper, str_to_lower, str_split, str_subset
 
-
 include("strings_docstrings.jl")
-
 
 """
 $docstring_str_detect

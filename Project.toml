@@ -4,7 +4,6 @@ authors = ["Daniel Rizk"]
 version = "0.1.0"
 
 [deps]
-Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
 
 [compat]
 julia = "1.6"
