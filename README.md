@@ -1,5 +1,10 @@
 # TidierStrings.jl
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/TidierOrg/TidierStrings.jl/blob/main/LICENSE)
+[![Docs: Latest](https://img.shields.io/badge/Docs-Latest-blue.svg)](https://tidierorg.github.io/TidierStrings.jl/dev)
+[![Build Status](https://github.com/TidierOrg/TidierStrings.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/TidierOrg/TidierStrings.jl/actions/workflows/CI.yml?query=branch%3Amain)
+[![Downloads](https://shields.io/endpoint?url=https://pkgs.genieframework.com/api/v1/badge/Tidier&label=Downloads)](https://pkgs.genieframework.com?packages=TidierStrings)
+
 ## What is TidierStrings.jl
 
 `TidierStrings.jl `is a 100% Julia implementation of the R stringr package. 
