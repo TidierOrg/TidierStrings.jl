@@ -1,0 +1,9 @@
+[deps]
+Chain = "8be319e6-bccf-4806-a6f7-6fae938471bc"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+DocumenterMarkdown = "997ab1e6-3595-5248-9280-8efb232c3433"
+Literate = "98b081ad-f1c9-55d3-8b20-4c87d4299306"
+Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
+Tidier = "f0413319-3358-4bb0-8e7c-0c83523a93bd"
+TidierStrings = "248e6834-d0f8-40ef-8fbb-8e711d883e9c"
