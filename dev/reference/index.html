@@ -408,74 +408,74 @@
 
   <h1>Reference</h1>
 
-<div><p><a id="Index"></a></p>
-<p><a id="Index-1"></a></p>
+<p><a id='Index'></a></p>
+<p><a id='Index-1'></a></p>
 <h2 id="index">Index<a class="headerlink" href="#index" title="Permanent link">¤</a></h2>
 <ul>
-<li><a href="./#TidierStrings.str_count-Tuple%7BUnion%7BMissing,%20String%7D,%20Union%7BRegex,%20String%7D%7D"><code>TidierStrings.str_count</code></a></li>
-<li><a href="./#TidierStrings.str_detect-Tuple%7BUnion%7BMissing,%20String%7D,%20Union%7BRegex,%20String%7D%7D"><code>TidierStrings.str_detect</code></a></li>
-<li><a href="./#TidierStrings.str_equal-Tuple%7BUnion%7BMissing,%20String%7D,%20Union%7BRegex,%20String%7D%7D"><code>TidierStrings.str_equal</code></a></li>
-<li><a href="./#TidierStrings.str_remove-Tuple%7BUnion%7BMissing,%20String%7D,%20Union%7BRegex,%20String%7D%7D"><code>TidierStrings.str_remove</code></a></li>
-<li><a href="./#TidierStrings.str_remove_all-Tuple%7BUnion%7BMissing,%20String%7D,%20Union%7BRegex,%20String%7D%7D"><code>TidierStrings.str_remove_all</code></a></li>
-<li><a href="./#TidierStrings.str_replace-Tuple%7BUnion%7BMissing,%20String%7D,%20Union%7BRegex,%20String%7D,%20String%7D"><code>TidierStrings.str_replace</code></a></li>
-<li><a href="./#TidierStrings.str_replace_all-Tuple%7BUnion%7BMissing,%20String%7D,%20Union%7BRegex,%20String%7D,%20String%7D"><code>TidierStrings.str_replace_all</code></a></li>
-<li><a href="./#TidierStrings.str_squish-Tuple%7BUnion%7BMissing,%20String%7D%7D"><code>TidierStrings.str_squish</code></a></li>
-<li><a href="./#TidierStrings.str_subset-Tuple%7BUnion%7BMissing,%20String%7D,%20Union%7BRegex,%20String%7D%7D"><code>TidierStrings.str_subset</code></a></li>
-<li><a href="./#TidierStrings.str_to_lower-Tuple%7BUnion%7BMissing,%20String%7D%7D"><code>TidierStrings.str_to_lower</code></a></li>
-<li><a href="./#TidierStrings.str_to_upper-Tuple%7BUnion%7BMissing,%20String%7D%7D"><code>TidierStrings.str_to_upper</code></a></li>
+<li><a href="./#TidierStrings.str_count-Tuple{Union{Missing, String}, Union{Regex, String}}"><code>TidierStrings.str_count</code></a></li>
+<li><a href="./#TidierStrings.str_detect-Tuple{Union{Missing, String}, Union{Regex, String}}"><code>TidierStrings.str_detect</code></a></li>
+<li><a href="./#TidierStrings.str_equal-Tuple{Union{Missing, String}, Union{Regex, String}}"><code>TidierStrings.str_equal</code></a></li>
+<li><a href="./#TidierStrings.str_remove-Tuple{Union{Missing, String}, Union{Regex, String}}"><code>TidierStrings.str_remove</code></a></li>
+<li><a href="./#TidierStrings.str_remove_all-Tuple{Union{Missing, String}, Union{Regex, String}}"><code>TidierStrings.str_remove_all</code></a></li>
+<li><a href="./#TidierStrings.str_replace-Tuple{Union{Missing, String}, Union{Regex, String}, String}"><code>TidierStrings.str_replace</code></a></li>
+<li><a href="./#TidierStrings.str_replace_all-Tuple{Union{Missing, String}, Union{Regex, String}, String}"><code>TidierStrings.str_replace_all</code></a></li>
+<li><a href="./#TidierStrings.str_squish-Tuple{Union{Missing, String}}"><code>TidierStrings.str_squish</code></a></li>
+<li><a href="./#TidierStrings.str_subset-Tuple{Union{Missing, String}, Union{Regex, String}}"><code>TidierStrings.str_subset</code></a></li>
+<li><a href="./#TidierStrings.str_to_lower-Tuple{Union{Missing, String}}"><code>TidierStrings.str_to_lower</code></a></li>
+<li><a href="./#TidierStrings.str_to_upper-Tuple{Union{Missing, String}}"><code>TidierStrings.str_to_upper</code></a></li>
 </ul>
-<p><a id="Reference-Exported-functions"></a></p>
-<p><a id="Reference-Exported-functions-1"></a></p>
+<p><a id='Reference-Exported-functions'></a></p>
+<p><a id='Reference-Exported-functions-1'></a></p>
 <h2 id="reference-exported-functions">Reference - Exported functions<a class="headerlink" href="#reference-exported-functions" title="Permanent link">¤</a></h2>
-<p><a id="TidierStrings.str_count-Tuple{Union{Missing, String}, Union{Regex, String}}" href="#TidierStrings.str_count-Tuple%7BUnion%7BMissing,%20String%7D,%20Union%7BRegex,%20String%7D%7D">#</a>
-<strong><code>TidierStrings.str_count</code></strong> — <em>Method</em>.</p>
+<p><a id='TidierStrings.str_count-Tuple{Union{Missing, String}, Union{Regex, String}}' href='#TidierStrings.str_count-Tuple{Union{Missing, String}, Union{Regex, String}}'>#</a>
+<strong><code>TidierStrings.str_count</code></strong> &mdash; <em>Method</em>.</p>
 <p>str_count(column::String, pattern::Union{String, Regex})</p>
 <p>Count the number of non-overlapping occurrences of a pattern in a string.</p>
 <p>Arguments column: The string in which to count the pattern. pattern: A string or a regular expression to find within the string. The pattern can include special logic:</p>
 <p>Use | to represent "or" (e.g., "red|blue" counts any string that contains "red" or "blue"). Returns The count of non-overlapping occurrences of pattern in column. Examples</p>
-<div class="highlight"><pre><span></span><code><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_count</span><span class="p">(</span><span class="s">"The blue sky is blue"</span><span class="p">,</span><span class="w"> </span><span class="s">"blue"</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_count</span><span class="p">(</span><span class="s">&quot;The blue sky is blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
 <span class="go">2</span>
 
-<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_count</span><span class="p">(</span><span class="s">"The blue sky is blue"</span><span class="p">,</span><span class="w"> </span><span class="sa">r</span><span class="sr">"blu"</span><span class="p">)</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_count</span><span class="p">(</span><span class="s">&quot;The blue sky is blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="sa">r</span><span class="sr">&quot;blu&quot;</span><span class="p">)</span>
 <span class="go">2</span>
 
-<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_count</span><span class="p">(</span><span class="s">"The blue sky is blue"</span><span class="p">,</span><span class="w"> </span><span class="s">"blue|sky"</span><span class="p">)</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_count</span><span class="p">(</span><span class="s">&quot;The blue sky is blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;blue|sky&quot;</span><span class="p">)</span>
 <span class="go">3</span>
 </code></pre></div>
-<p><a target="_blank" href="https://github.com/TidierOrg/TidierStrings.jl/blob/7d174a24fcb6f6a9bd410afa76eb79410757a318/src/TidierStrings.jl#L153-L177" class="documenter-source">source</a><br></p>
-<p><a id="TidierStrings.str_detect-Tuple{Union{Missing, String}, Union{Regex, String}}" href="#TidierStrings.str_detect-Tuple%7BUnion%7BMissing,%20String%7D,%20Union%7BRegex,%20String%7D%7D">#</a>
-<strong><code>TidierStrings.str_detect</code></strong> — <em>Method</em>.</p>
+<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/732e25a5bf6485855ca9a7eeb163fe156ec358c0/src/TidierStrings.jl#L153-L177' class='documenter-source'>source</a><br></p>
+<p><a id='TidierStrings.str_detect-Tuple{Union{Missing, String}, Union{Regex, String}}' href='#TidierStrings.str_detect-Tuple{Union{Missing, String}, Union{Regex, String}}'>#</a>
+<strong><code>TidierStrings.str_detect</code></strong> &mdash; <em>Method</em>.</p>
 <p>str_detect(column::String, pattern::Union{String, Regex})</p>
 <p>Determine if a string contains a certain pattern.</p>
 <p>Arguments column: The string to check. pattern: A string or a regular expression to find within the string. The pattern can include special logic:</p>
 <p>Use | to represent "or" (e.g., "red|blue" matches any string that contains "red" or "blue"). Use &amp; to represent "and" (e.g., "red&amp;blue" matches any string that contains both "red" and "blue"). Returns true if the string contains the pattern, false otherwise. Examples</p>
-<div class="highlight"><pre><span></span><code><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_detect</span><span class="p">(</span><span class="s">"The sky is blue"</span><span class="p">,</span><span class="w"> </span><span class="s">"blue"</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_detect</span><span class="p">(</span><span class="s">&quot;The sky is blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
 <span class="go">true</span>
 
-<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_detect</span><span class="p">(</span><span class="s">"The sky is blue"</span><span class="p">,</span><span class="w"> </span><span class="s">"red"</span><span class="p">)</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_detect</span><span class="p">(</span><span class="s">&quot;The sky is blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span>
 <span class="go">false</span>
 
-<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_detect</span><span class="p">(</span><span class="s">"The sky is blue"</span><span class="p">,</span><span class="w"> </span><span class="sa">r</span><span class="sr">"blu"</span><span class="p">)</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_detect</span><span class="p">(</span><span class="s">&quot;The sky is blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="sa">r</span><span class="sr">&quot;blu&quot;</span><span class="p">)</span>
 <span class="go">false</span>
 
-<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_detect</span><span class="p">(</span><span class="s">"The sky is blue"</span><span class="p">,</span><span class="w"> </span><span class="s">"blue|red"</span><span class="p">)</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_detect</span><span class="p">(</span><span class="s">&quot;The sky is blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;blue|red&quot;</span><span class="p">)</span>
 <span class="go">true</span>
 
-<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_detect</span><span class="p">(</span><span class="s">"The sky is blue and the sun is red"</span><span class="p">,</span><span class="w"> </span><span class="s">"blue&amp;red"</span><span class="p">)</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_detect</span><span class="p">(</span><span class="s">&quot;The sky is blue and the sun is red&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;blue&amp;red&quot;</span><span class="p">)</span>
 <span class="go">true</span>
 </code></pre></div>
-<p><a target="_blank" href="https://github.com/TidierOrg/TidierStrings.jl/blob/7d174a24fcb6f6a9bd410afa76eb79410757a318/src/TidierStrings.jl#L7-L38" class="documenter-source">source</a><br></p>
-<p><a id="TidierStrings.str_equal-Tuple{Union{Missing, String}, Union{Regex, String}}" href="#TidierStrings.str_equal-Tuple%7BUnion%7BMissing,%20String%7D,%20Union%7BRegex,%20String%7D%7D">#</a>
-<strong><code>TidierStrings.str_equal</code></strong> — <em>Method</em>.</p>
+<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/732e25a5bf6485855ca9a7eeb163fe156ec358c0/src/TidierStrings.jl#L7-L38' class='documenter-source'>source</a><br></p>
+<p><a id='TidierStrings.str_equal-Tuple{Union{Missing, String}, Union{Regex, String}}' href='#TidierStrings.str_equal-Tuple{Union{Missing, String}, Union{Regex, String}}'>#</a>
+<strong><code>TidierStrings.str_equal</code></strong> &mdash; <em>Method</em>.</p>
 <p>str_equal(column::String, pattern::Union{String, Regex})</p>
 <p>Check if a string exactly equals to a pattern, or for regular expressions, if the pattern can match the entire string.</p>
 <p>Arguments column: The string to be checked. pattern: The pattern to compare against. Can be a plain string or a Regex. Returns true if column equals to pattern (for plain strings) or if pattern can match the entire column (for Regex). false otherwise. Examples</p>
-<div class="highlight"><pre><span></span><code><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_equal</span><span class="p">(</span><span class="s">"hello"</span><span class="p">,</span><span class="w"> </span><span class="s">"hello"</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_equal</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
 <span class="go">true</span>
 </code></pre></div>
-<p><a target="_blank" href="https://github.com/TidierOrg/TidierStrings.jl/blob/7d174a24fcb6f6a9bd410afa76eb79410757a318/src/TidierStrings.jl#L188-L204" class="documenter-source">source</a><br></p>
-<p><a id="TidierStrings.str_remove-Tuple{Union{Missing, String}, Union{Regex, String}}" href="#TidierStrings.str_remove-Tuple%7BUnion%7BMissing,%20String%7D,%20Union%7BRegex,%20String%7D%7D">#</a>
-<strong><code>TidierStrings.str_remove</code></strong> — <em>Method</em>.</p>
+<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/732e25a5bf6485855ca9a7eeb163fe156ec358c0/src/TidierStrings.jl#L188-L204' class='documenter-source'>source</a><br></p>
+<p><a id='TidierStrings.str_remove-Tuple{Union{Missing, String}, Union{Regex, String}}' href='#TidierStrings.str_remove-Tuple{Union{Missing, String}, Union{Regex, String}}'>#</a>
+<strong><code>TidierStrings.str_remove</code></strong> &mdash; <em>Method</em>.</p>
 <p>str_remove(column::String, pattern::Union{String, Regex})</p>
 <p>Remove the first occurrence of the pattern in the string.</p>
 <p>Arguments</p>
@@ -485,15 +485,15 @@
 </ul>
 <p>Returns A string with the first occurrence of the pattern removed.</p>
 <p>Examples</p>
-<div class="highlight"><pre><span></span><code><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">column</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"I love tidier strings strings"</span>
-<span class="go">"I love tidier strings strings"</span>
+<div class="highlight"><pre><span></span><code><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">column</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;I love tidier strings strings&quot;</span>
+<span class="go">&quot;I love tidier strings strings&quot;</span>
 
-<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_remove</span><span class="p">(</span><span class="n">column</span><span class="p">,</span><span class="w"> </span><span class="s">" strings"</span><span class="p">)</span>
-<span class="go">"I love tidier strings"</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_remove</span><span class="p">(</span><span class="n">column</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; strings&quot;</span><span class="p">)</span>
+<span class="go">&quot;I love tidier strings&quot;</span>
 </code></pre></div>
-<p><a target="_blank" href="https://github.com/TidierOrg/TidierStrings.jl/blob/7d174a24fcb6f6a9bd410afa76eb79410757a318/src/TidierStrings.jl#L98-L118" class="documenter-source">source</a><br></p>
-<p><a id="TidierStrings.str_remove_all-Tuple{Union{Missing, String}, Union{Regex, String}}" href="#TidierStrings.str_remove_all-Tuple%7BUnion%7BMissing,%20String%7D,%20Union%7BRegex,%20String%7D%7D">#</a>
-<strong><code>TidierStrings.str_remove_all</code></strong> — <em>Method</em>.</p>
+<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/732e25a5bf6485855ca9a7eeb163fe156ec358c0/src/TidierStrings.jl#L98-L118' class='documenter-source'>source</a><br></p>
+<p><a id='TidierStrings.str_remove_all-Tuple{Union{Missing, String}, Union{Regex, String}}' href='#TidierStrings.str_remove_all-Tuple{Union{Missing, String}, Union{Regex, String}}'>#</a>
+<strong><code>TidierStrings.str_remove_all</code></strong> &mdash; <em>Method</em>.</p>
 <p>str<em>remove</em>all(column::String, pattern::Union{String, Regex})</p>
 <p>Remove all occurrences of the pattern in the string.</p>
 <p>Arguments</p>
@@ -503,90 +503,90 @@
 </ul>
 <p>Returns A string with all occurrences of the pattern removed.</p>
 <p>Examples</p>
-<div class="highlight"><pre><span></span><code><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">column</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"I love tidier strings, I love tidier strings"</span>
-<span class="go">"I love tidier strings, I love tidier strings"</span>
+<div class="highlight"><pre><span></span><code><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">column</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;I love tidier strings, I love tidier strings&quot;</span>
+<span class="go">&quot;I love tidier strings, I love tidier strings&quot;</span>
 
-<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_remove_all</span><span class="p">(</span><span class="n">column</span><span class="p">,</span><span class="w"> </span><span class="s">" strings"</span><span class="p">)</span>
-<span class="go">"I love tidier , I love tidier "</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_remove_all</span><span class="p">(</span><span class="n">column</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; strings&quot;</span><span class="p">)</span>
+<span class="go">&quot;I love tidier , I love tidier &quot;</span>
 </code></pre></div>
-<p><a target="_blank" href="https://github.com/TidierOrg/TidierStrings.jl/blob/7d174a24fcb6f6a9bd410afa76eb79410757a318/src/TidierStrings.jl#L129-L150" class="documenter-source">source</a><br></p>
-<p><a id="TidierStrings.str_replace-Tuple{Union{Missing, String}, Union{Regex, String}, String}" href="#TidierStrings.str_replace-Tuple%7BUnion%7BMissing,%20String%7D,%20Union%7BRegex,%20String%7D,%20String%7D">#</a>
-<strong><code>TidierStrings.str_replace</code></strong> — <em>Method</em>.</p>
+<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/732e25a5bf6485855ca9a7eeb163fe156ec358c0/src/TidierStrings.jl#L129-L150' class='documenter-source'>source</a><br></p>
+<p><a id='TidierStrings.str_replace-Tuple{Union{Missing, String}, Union{Regex, String}, String}' href='#TidierStrings.str_replace-Tuple{Union{Missing, String}, Union{Regex, String}, String}'>#</a>
+<strong><code>TidierStrings.str_replace</code></strong> &mdash; <em>Method</em>.</p>
 <p>str_replace(column::String, pattern::Union{String, Regex}, replacement::String)</p>
 <p>Replace the first occurrence of a pattern in a string with a specified string.</p>
 <p>Arguments column: The string in which to replace the pattern. pattern: A string or a regular expression to find within the string. replacement: The string to insert in place of the pattern. The pattern can include special logic:</p>
 <p>Use | to represent "or" (e.g., "red|blue" matches any string that contains "red" or "blue"). Returns A new string with the first occurrence of the pattern replaced with the replacement. Examples</p>
-<div class="highlight"><pre><span></span><code><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_replace</span><span class="p">(</span><span class="s">"The sky is blue"</span><span class="p">,</span><span class="w"> </span><span class="s">"blue"</span><span class="p">,</span><span class="w"> </span><span class="s">"red"</span><span class="p">)</span>
-<span class="go">"The sky is red"</span>
+<div class="highlight"><pre><span></span><code><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_replace</span><span class="p">(</span><span class="s">&quot;The sky is blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="go">&quot;The sky is red&quot;</span>
 
-<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_replace</span><span class="p">(</span><span class="s">"The sky is blue"</span><span class="p">,</span><span class="w"> </span><span class="sa">r</span><span class="sr">"blu"</span><span class="p">,</span><span class="w"> </span><span class="s">"red"</span><span class="p">)</span>
-<span class="go">"The sky is blue"</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_replace</span><span class="p">(</span><span class="s">&quot;The sky is blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="sa">r</span><span class="sr">&quot;blu&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="go">&quot;The sky is blue&quot;</span>
 
-<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_replace</span><span class="p">(</span><span class="s">"The sky is blue"</span><span class="p">,</span><span class="w"> </span><span class="s">"blue|sky"</span><span class="p">,</span><span class="w"> </span><span class="s">"red"</span><span class="p">)</span>
-<span class="go">"The red is blue"</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_replace</span><span class="p">(</span><span class="s">&quot;The sky is blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;blue|sky&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="go">&quot;The red is blue&quot;</span>
 </code></pre></div>
-<p><a target="_blank" href="https://github.com/TidierOrg/TidierStrings.jl/blob/7d174a24fcb6f6a9bd410afa76eb79410757a318/src/TidierStrings.jl#L38-L63" class="documenter-source">source</a><br></p>
-<p><a id="TidierStrings.str_replace_all-Tuple{Union{Missing, String}, Union{Regex, String}, String}" href="#TidierStrings.str_replace_all-Tuple%7BUnion%7BMissing,%20String%7D,%20Union%7BRegex,%20String%7D,%20String%7D">#</a>
-<strong><code>TidierStrings.str_replace_all</code></strong> — <em>Method</em>.</p>
+<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/732e25a5bf6485855ca9a7eeb163fe156ec358c0/src/TidierStrings.jl#L38-L63' class='documenter-source'>source</a><br></p>
+<p><a id='TidierStrings.str_replace_all-Tuple{Union{Missing, String}, Union{Regex, String}, String}' href='#TidierStrings.str_replace_all-Tuple{Union{Missing, String}, Union{Regex, String}, String}'>#</a>
+<strong><code>TidierStrings.str_replace_all</code></strong> &mdash; <em>Method</em>.</p>
 <p>str<em>replace</em>all(column::String, pattern::Union{String, Regex}, replacement::String)</p>
 <p>Replace all occurrences of a pattern in a string with a specified string.</p>
 <p>Arguments column: The string in which to replace the pattern. pattern: A string or a regular expression to find within the string. replacement: The string to insert in place of the pattern. The pattern can include special logic:</p>
 <p>Use | to represent "or" (e.g., "red|blue" matches any string that contains "red" or "blue"). Returns A new string with all occurrences of the pattern replaced with the replacement. Examples</p>
-<div class="highlight"><pre><span></span><code><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_replace_all</span><span class="p">(</span><span class="s">"The blue sky is blue"</span><span class="p">,</span><span class="w"> </span><span class="s">"blue"</span><span class="p">,</span><span class="w"> </span><span class="s">"red"</span><span class="p">)</span>
-<span class="go">"The red sky is red"</span>
+<div class="highlight"><pre><span></span><code><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_replace_all</span><span class="p">(</span><span class="s">&quot;The blue sky is blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="go">&quot;The red sky is red&quot;</span>
 
-<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_replace_all</span><span class="p">(</span><span class="s">"The blue sky is blue"</span><span class="p">,</span><span class="w"> </span><span class="sa">r</span><span class="sr">"blu"</span><span class="p">,</span><span class="w"> </span><span class="s">"red"</span><span class="p">)</span>
-<span class="go">"The blue sky is blue"</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_replace_all</span><span class="p">(</span><span class="s">&quot;The blue sky is blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="sa">r</span><span class="sr">&quot;blu&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="go">&quot;The blue sky is blue&quot;</span>
 
-<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_replace_all</span><span class="p">(</span><span class="s">"The blue sky is blue"</span><span class="p">,</span><span class="w"> </span><span class="s">"blue|sky"</span><span class="p">,</span><span class="w"> </span><span class="s">"red"</span><span class="p">)</span>
-<span class="go">"The red red is red"</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_replace_all</span><span class="p">(</span><span class="s">&quot;The blue sky is blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;blue|sky&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="go">&quot;The red red is red&quot;</span>
 </code></pre></div>
-<p><a target="_blank" href="https://github.com/TidierOrg/TidierStrings.jl/blob/7d174a24fcb6f6a9bd410afa76eb79410757a318/src/TidierStrings.jl#L71-L96" class="documenter-source">source</a><br></p>
-<p><a id="TidierStrings.str_squish-Tuple{Union{Missing, String}}" href="#TidierStrings.str_squish-Tuple%7BUnion%7BMissing,%20String%7D%7D">#</a>
-<strong><code>TidierStrings.str_squish</code></strong> — <em>Method</em>.</p>
+<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/732e25a5bf6485855ca9a7eeb163fe156ec358c0/src/TidierStrings.jl#L71-L96' class='documenter-source'>source</a><br></p>
+<p><a id='TidierStrings.str_squish-Tuple{Union{Missing, String}}' href='#TidierStrings.str_squish-Tuple{Union{Missing, String}}'>#</a>
+<strong><code>TidierStrings.str_squish</code></strong> &mdash; <em>Method</em>.</p>
 <p>str_squish(column::String)</p>
 <p>Squish a string, removing consecutive whitespace and replacing it with a single space, as well as removing leading and trailing whitespace.</p>
 <p>Arguments column: The string to be squished. Returns A squished version of column. Examples</p>
-<div class="highlight"><pre><span></span><code><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_squish</span><span class="p">(</span><span class="s">"  This    is a string   with   spaces   "</span><span class="p">)</span>
-<span class="go">"This is a string with spaces"</span>
+<div class="highlight"><pre><span></span><code><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_squish</span><span class="p">(</span><span class="s">&quot;  This    is a string   with   spaces   &quot;</span><span class="p">)</span>
+<span class="go">&quot;This is a string with spaces&quot;</span>
 
-<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_squish</span><span class="p">(</span><span class="s">"  Leading and trailing spaces   "</span><span class="p">)</span>
-<span class="go">"Leading and trailing spaces"</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_squish</span><span class="p">(</span><span class="s">&quot;  Leading and trailing spaces   &quot;</span><span class="p">)</span>
+<span class="go">&quot;Leading and trailing spaces&quot;</span>
 </code></pre></div>
-<p><a target="_blank" href="https://github.com/TidierOrg/TidierStrings.jl/blob/7d174a24fcb6f6a9bd410afa76eb79410757a318/src/TidierStrings.jl#L172-L189" class="documenter-source">source</a><br></p>
-<p><a id="TidierStrings.str_subset-Tuple{Union{Missing, String}, Union{Regex, String}}" href="#TidierStrings.str_subset-Tuple%7BUnion%7BMissing,%20String%7D,%20Union%7BRegex,%20String%7D%7D">#</a>
-<strong><code>TidierStrings.str_subset</code></strong> — <em>Method</em>.</p>
+<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/732e25a5bf6485855ca9a7eeb163fe156ec358c0/src/TidierStrings.jl#L172-L189' class='documenter-source'>source</a><br></p>
+<p><a id='TidierStrings.str_subset-Tuple{Union{Missing, String}, Union{Regex, String}}' href='#TidierStrings.str_subset-Tuple{Union{Missing, String}, Union{Regex, String}}'>#</a>
+<strong><code>TidierStrings.str_subset</code></strong> &mdash; <em>Method</em>.</p>
 <p>str_subset(column::String, pattern::Union{String, Regex})</p>
 <p>Subset a string based on the presence of pattern. If the pattern exists within the string, the function will return the original string. If the pattern is not found within the string, the function will return an empty string.</p>
 <p>Arguments column: The string from which to extract the subset. pattern: The pattern to search for within the string. Can be a plain string or a Regex. Returns The original string if the pattern is found within it, otherwise an empty string. Examples</p>
-<div class="highlight"><pre><span></span><code><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_subset</span><span class="p">(</span><span class="s">"Hello world!"</span><span class="p">,</span><span class="w"> </span><span class="s">"world"</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_subset</span><span class="p">(</span><span class="s">&quot;Hello world!&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;world&quot;</span><span class="p">)</span>
 <span class="go">true</span>
 
-<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_subset</span><span class="p">(</span><span class="s">"Hello world!"</span><span class="p">,</span><span class="w"> </span><span class="s">"universe"</span><span class="p">)</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_subset</span><span class="p">(</span><span class="s">&quot;Hello world!&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;universe&quot;</span><span class="p">)</span>
 <span class="go">false</span>
 </code></pre></div>
-<p><a target="_blank" href="https://github.com/TidierOrg/TidierStrings.jl/blob/7d174a24fcb6f6a9bd410afa76eb79410757a318/src/TidierStrings.jl#L243-L261" class="documenter-source">source</a><br></p>
-<p><a id="TidierStrings.str_to_lower-Tuple{Union{Missing, String}}" href="#TidierStrings.str_to_lower-Tuple%7BUnion%7BMissing,%20String%7D%7D">#</a>
-<strong><code>TidierStrings.str_to_lower</code></strong> — <em>Method</em>.</p>
+<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/732e25a5bf6485855ca9a7eeb163fe156ec358c0/src/TidierStrings.jl#L243-L261' class='documenter-source'>source</a><br></p>
+<p><a id='TidierStrings.str_to_lower-Tuple{Union{Missing, String}}' href='#TidierStrings.str_to_lower-Tuple{Union{Missing, String}}'>#</a>
+<strong><code>TidierStrings.str_to_lower</code></strong> &mdash; <em>Method</em>.</p>
 <p>str<em>to</em>lower(s::AbstractString)</p>
 <p>Convert all characters in a string to lower case.</p>
 <p>Arguments s: Input string. Returns String with all characters converted to lower case. Examples</p>
-<div class="highlight"><pre><span></span><code><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_to_lower</span><span class="p">(</span><span class="s">"Hello World!"</span><span class="p">)</span>
-<span class="go">"hello world!"</span>
+<div class="highlight"><pre><span></span><code><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_to_lower</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">)</span>
+<span class="go">&quot;hello world!&quot;</span>
 </code></pre></div>
-<p><a target="_blank" href="https://github.com/TidierOrg/TidierStrings.jl/blob/7d174a24fcb6f6a9bd410afa76eb79410757a318/src/TidierStrings.jl#L218-L232" class="documenter-source">source</a><br></p>
-<p><a id="TidierStrings.str_to_upper-Tuple{Union{Missing, String}}" href="#TidierStrings.str_to_upper-Tuple%7BUnion%7BMissing,%20String%7D%7D">#</a>
-<strong><code>TidierStrings.str_to_upper</code></strong> — <em>Method</em>.</p>
+<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/732e25a5bf6485855ca9a7eeb163fe156ec358c0/src/TidierStrings.jl#L218-L232' class='documenter-source'>source</a><br></p>
+<p><a id='TidierStrings.str_to_upper-Tuple{Union{Missing, String}}' href='#TidierStrings.str_to_upper-Tuple{Union{Missing, String}}'>#</a>
+<strong><code>TidierStrings.str_to_upper</code></strong> &mdash; <em>Method</em>.</p>
 <p>str<em>to</em>upper(s::AbstractString)</p>
 <p>Convert all characters in a string to upper case.</p>
 <p>Arguments s: Input string. Returns String with all characters converted to upper case. Examples</p>
-<div class="highlight"><pre><span></span><code><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_to_upper</span><span class="p">(</span><span class="s">"Hello World!"</span><span class="p">)</span>
-<span class="go">"HELLO WORLD!"</span>
+<div class="highlight"><pre><span></span><code><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_to_upper</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">)</span>
+<span class="go">&quot;HELLO WORLD!&quot;</span>
 </code></pre></div>
-<p><a target="_blank" href="https://github.com/TidierOrg/TidierStrings.jl/blob/7d174a24fcb6f6a9bd410afa76eb79410757a318/src/TidierStrings.jl#L206-L221" class="documenter-source">source</a><br></p>
-<p><a id="Reference-Internal-functions"></a></p>
-<p><a id="Reference-Internal-functions-1"></a></p>
-<h2 id="reference-internal-functions">Reference - Internal functions<a class="headerlink" href="#reference-internal-functions" title="Permanent link">¤</a></h2></div>
+<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/732e25a5bf6485855ca9a7eeb163fe156ec358c0/src/TidierStrings.jl#L206-L221' class='documenter-source'>source</a><br></p>
+<p><a id='Reference-Internal-functions'></a></p>
+<p><a id='Reference-Internal-functions-1'></a></p>
+<h2 id="reference-internal-functions">Reference - Internal functions<a class="headerlink" href="#reference-internal-functions" title="Permanent link">¤</a></h2>
 
 
 
@@ -678,7 +678,7 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "navigation.footer", "search.highlight", "search.share", "search.suggest", "toc.follow", "header.autohide"], "search": "../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.annotate", "navigation.top", "navigation.footer", "search.highlight", "search.share", "search.suggest", "toc.follow", "header.autohide"], "search": "../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.220ee61c.min.js"></script>
