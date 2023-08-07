@@ -2,7 +2,7 @@
 
 ## TidierStrings
 
-The goal of this package is to replicate the beauty of Stringr from R in Julia in a way that works with Tidier or as a stand alone function.
+The goal of this package is to replicate the beauty of stringr from R in Julia in a way that works with Tidier or as a stand alone function.
 
 This package includes:
 
@@ -17,5 +17,4 @@ This package includes:
 - `str_equal()`
 - `str_to_upper()`
 - `str_to_lower()`
-- `str_split()`
 - `str_subset()`
