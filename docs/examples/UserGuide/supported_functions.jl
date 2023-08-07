@@ -25,7 +25,7 @@ df = @chain df begin
     @mutate(City = str_squish(City))
 end
 
-# ## `str_replace()`/`str_replace_all`
+# ## `str_replace()`, `str_replace_all`
 # Replaces the first occurrence of a pattern in a string with a specified text. Takes a string, pattern to search for, and the replacement text as arguments. It also supports the use of regex and logical operator | . This is in contrast to `str_replace_all()` which will replace each occurence of a match within a string.
 
 @chain df begin
@@ -35,7 +35,7 @@ end
 
 end
 
-# ## `str_remove()`/`str_remove_all()`
+# ## `str_remove()`, `str_remove_all()`
 # These functions will remove the first occurence or all occurences of a match, respectively.
 
 @chain df begin
@@ -69,7 +69,7 @@ end
     @mutate(Same_City = case_when(str_equal(City, Occupation) => "Yes", true => "No"))
 end
 
-# ## `str_to_upper()`/`str_to_lower()`
+# ## `str_to_upper()`, `str_to_lower()`
 #  These will take a string and convert it to all uppercase or lowercase
 
 @chain df begin
