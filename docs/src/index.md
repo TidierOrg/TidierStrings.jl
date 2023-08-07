@@ -2,7 +2,7 @@
 
 ## TidierStrings
 
-The goal of this package is to replicate the beauty of Stringr from R in Julia in a way that works with Tidier or as a stand alone function.
+The goal of this package is to replicate the beauty of stringr from R in Julia in a way that works with Tidier or as a stand alone function.
 
 This package includes:
 
