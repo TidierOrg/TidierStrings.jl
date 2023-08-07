@@ -52,7 +52,7 @@ TidierStrings.jl currently supports:
 ## Examples
 
 ```julia
-using TidierData
+using Tidier
 using TidierStrings
 df = DataFrame(
   Names = ["Alice", "Bob", "Charlie", "Dave", "Eve", "Frank", "Grace"],

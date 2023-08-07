@@ -1,4 +1,4 @@
-using TidierData
+using Tidier
 using TidierStrings
 using DataFrames, Chain
 
