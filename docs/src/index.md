@@ -17,5 +17,4 @@ This package includes:
 - `str_equal()`
 - `str_to_upper()`
 - `str_to_lower()`
-- `str_split()`
 - `str_subset()`

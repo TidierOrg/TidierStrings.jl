@@ -11,9 +11,20 @@
 
 `TidierStrings.jl `is a 100% Julia implementation of the R stringr package. 
 
-`TidierStrings.jl` has one main goal: to implement stringr's straightforward syntax and of ease of use for Julia users. While this package was develeoped to work seamelessly with `Tidier.jl` fucntions and macros, it can also work as a indepentenly as a standalone package. 
+`TidierStrings.jl` has one main goal: to implement stringr's straightforward syntax and of ease of use for Julia users. While this package was developed to work seamlessly with `TidierData.jl` functions and macros, it also works independently as a standalone package. 
 
 ## Installation
+
+For the stable version:
+
+```
+] add TidierStrings
+```
+
+The `]` character starts the Julia [package manager](https://docs.julialang.org/en/v1/stdlib/Pkg/). Press the backspace key to return to the Julia prompt.
+
+or
+
 
 For the development version:
 
@@ -41,7 +52,7 @@ TidierStrings.jl currently supports:
 ## Examples
 
 ```julia
-using Tidier
+using TidierData
 using TidierStrings
 df = DataFrame(
   Names = ["Alice", "Bob", "Charlie", "Dave", "Eve", "Frank", "Grace"],

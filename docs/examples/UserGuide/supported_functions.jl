@@ -1,4 +1,4 @@
-using Tidier
+using TidierData
 using TidierStrings
 using DataFrames, Chain
 
@@ -15,9 +15,9 @@ df = DataFrame(
                  "Grace is a teacher in San Antonio"]
 )
 
-# str_detect, str_replace, str_replace_all, str_count, str_equal, str_split, str_subset support regex use as well
+# Support Regex: `str_detect`, `str_replace`, `str_replace_all`, `str_remove`, `str_remove_all` `str_count`, `str_equal`, `str_subset`
 
-# ## str_squish()
+# ## `str_squish()`
 # Removes leading and trailing white spaces from a string and also replaces consecutive white spaces in between
 # words with a single space. It will also remove new lines.
 
@@ -25,8 +25,8 @@ df = @chain df begin
     @mutate(City = str_squish(City))
 end
 
-# ## str_replace()
-# Replaces the first occurrence of a pattern in a string with a specified text. Takes a string, pattern to search for, and the replacement text as arguments. It also supports the use of regex and logical operator | . This is in contrast to str_replace_all() which will replace each occurence of a match within a string.
+# ## `str_replace()`/`str_replace_all`
+# Replaces the first occurrence of a pattern in a string with a specified text. Takes a string, pattern to search for, and the replacement text as arguments. It also supports the use of regex and logical operator | . This is in contrast to `str_replace_all()` which will replace each occurence of a match within a string.
 
 @chain df begin
   @mutate(City = str_replace(City, r"\s*20\d{2}-\d{2,4}\s*", " ####-## "))
@@ -35,15 +35,15 @@ end
 
 end
 
-# also available is `str_remove` and `str_remove_all`
+# ## `str_remove()`/`str_remove_all()`
+# These functions will remove the first occurence or all occurences of a match, respectively.
 
 @chain df begin
     @mutate(split = str_remove_all(Description, "is"))
 end
 
 
-# ## str_detect()
-
+# ## `str_detect()`
 # Checks if a pattern exists in a string. It takes a string and a pattern as arguments and returns a boolean indicating
 # the presence of the pattern in the string. This can be used inside of `@filter`, `@mutate`, `if_else()` and `case_when()`.
 # `str_detect` supports logical operators `|` and `&`. `case_when()` with `filter()` and `str_detect()`.
@@ -61,7 +61,7 @@ end
 end
 
 
-# ## str_equal()
+# ## `str_equal()`
 # Checks if two strings are exactly the same. Takes two strings as arguments and returns a boolean indicating
 # whether the strings are identical.
 
@@ -69,22 +69,15 @@ end
     @mutate(Same_City = case_when(str_equal(City, Occupation) => "Yes", true => "No"))
 end
 
-# ## `str_to_upper`, `str_to_lower`
+# ## `str_to_upper()`/`str_to_lower()`
 #  These will take a string and convert it to all uppercase or lowercase
 
 @chain df begin
     @mutate(Names = str_to_upper(Names))
 end
 
-# ## `str_split()`
-# Splits a string into substrings based on a pattern (like a delimiter). Takes a string and a pattern as
-# arguments and returns a list of substrings.
 
-# @chain df begin
-#     @mutate(split = str_split(Description, "in"))
-# end
-
-# ## str_subset()
+# ## `str_subset()`
 # Returns the subset of strings that match a pattern. Takes a vector of strings and a pattern as arguments
 # and returns the subset of strings that contain the pattern.
 
