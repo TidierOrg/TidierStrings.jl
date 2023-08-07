@@ -104,7 +104,7 @@ end
    7 │ Grace    San Jose 9876543210          Teacher       Grace is a teacher in San Antonio
 ```
 
-#### `str_detect`, `str_replace`, `str_replace_all`, `str_count`, `str_equal`, and `str_subset` support regex use
+#### Support Regex: `str_detect`, `str_replace`, `str_replace_all`, `str_remove`, `str_remove_all`, `str_count`, `str_equal`, and `str_subset` 
 
 #### `str_detect()`
 'str_detect()' checks if a pattern exists in a string. It takes a string and a pattern as arguments and returns a boolean indicating the presence of the pattern in the string. This can be used inside of `@filter`, `@mutate`, `if_else()` and `case_when()`. `str_detect` supports logical operators | and &. 
