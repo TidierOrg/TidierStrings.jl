@@ -598,7 +598,7 @@
 <p><a id='str_subset()'></a></p>
 <p><a id='str_subset()-1'></a></p>
 <h2 id="str_subset"><code>str_subset()</code><a class="headerlink" href="#str_subset" title="Permanent link">¤</a></h2>
-<p>Returns the subset of strings that match a pattern. Takes a vector of strings and a pattern as arguments and returns the subset of strings that contain the pattern.</p>
+<p>Returns the subset of strings that match a pattern. Takes a vector of strings and a pattern as arguments and returns all elements of a string that contains the pattern.</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@chain</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="k">begin</span>
 <span class="w">    </span><span class="nd">@mutate</span><span class="p">(</span><span class="n">split</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">str_subset</span><span class="p">(</span><span class="n">Description</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;artist&quot;</span><span class="p">))</span>
 <span class="k">end</span>
