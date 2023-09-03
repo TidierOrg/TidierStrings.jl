@@ -79,7 +79,7 @@ end
 
 # ## `str_subset()`
 # Returns the subset of strings that match a pattern. Takes a vector of strings and a pattern as arguments
-# and returns the subset of strings that contain the pattern.
+# and returns all elements of a string that contains the pattern.
 
 @chain df begin
     @mutate(split = str_subset(Description, "artist"))
