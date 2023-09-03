@@ -243,26 +243,31 @@ end
 """
 $docstring_str_subset
 """
-function str_subset(column::Union{Missing, String}, pattern::Union{String, Regex})
-    if ismissing(column)
-        return(column)
-    end 
-    
-    
-    if pattern isa String
-        or_groups = split(pattern, '|')
-
-        or_results = []
-        for or_group in or_groups
-            trimmed_pattern = strip(or_group)
-            push!(or_results, occursin(trimmed_pattern, column))
+function str_subset(column::Union{Vector{String}, String}, pattern::Union{String, Regex})
+    processor = x -> begin
+        if ismissing(x)
+            return x
         end
 
-        return any(or_results)
-    else
-        # For regular expressions, directly use occursin
-        return occursin(pattern, column)
+        matched = false
+
+        if pattern isa String
+            or_groups = split(pattern, '|')
+            for or_group in or_groups
+                trimmed_pattern = strip(or_group)
+                if occursin(trimmed_pattern, x)
+                    matched = true
+                    break
+                end
+            end
+        else
+            matched = occursin(pattern, x)
+        end
+
+        return matched ? x : ""
     end
+
+    return column isa Vector{String} ? map(processor, column) : processor(column)
 end
 
 

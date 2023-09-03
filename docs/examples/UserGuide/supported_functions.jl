@@ -82,5 +82,5 @@ end
 # and returns the subset of strings that contain the pattern.
 
 @chain df begin
-    @mutate(split = str_subset(Description, "in"))
+    @mutate(split = str_subset(Description, "artist"))
 end

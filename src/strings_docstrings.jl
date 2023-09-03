@@ -1,11 +1,11 @@
 const docstring_str_detect  =
 """
-str_detect(column::String, pattern::Union{String, Regex})
+    str_detect(column::String, pattern::Union{String, Regex})
 
 Determine if a string contains a certain pattern.
 
-Arguments
-column: The string to check.
+# Arguments
+- `column`: The string to check.
 pattern: A string or a regular expression to find within the string.
 The pattern can include special logic:
 
@@ -13,7 +13,7 @@ Use | to represent "or" (e.g., "red|blue" matches any string that contains "red"
 Use & to represent "and" (e.g., "red&blue" matches any string that contains both "red" and "blue").
 Returns
 true if the string contains the pattern, false otherwise.
-Examples
+# Examples
 ```jldoctest
 julia> str_detect("The sky is blue", "blue")
 true
@@ -62,20 +62,20 @@ julia> str_replace("The sky is blue", "blue|sky", "red")
 
 const docstring_str_replace_all =
 """
-str_replace_all(column::String, pattern::Union{String, Regex}, replacement::String)
+    str_replace_all(column::String, pattern::Union{String, Regex}, replacement::String)
 
 Replace all occurrences of a pattern in a string with a specified string.
 
-Arguments
-column: The string in which to replace the pattern.
-pattern: A string or a regular expression to find within the string.
+# Arguments
+- `column`: The string in which to replace the pattern.
+- `pattern`: A string or a regular expression to find within the string.
 replacement: The string to insert in place of the pattern.
 The pattern can include special logic:
 
 Use | to represent "or" (e.g., "red|blue" matches any string that contains "red" or "blue").
 Returns
 A new string with all occurrences of the pattern replaced with the replacement.
-Examples
+# Examples
 ```jldoctest
 julia> str_replace_all("The blue sky is blue", "blue", "red")
 "The red sky is red"
@@ -89,13 +89,13 @@ julia> str_replace_all("The blue sky is blue", "blue|sky", "red")
 """
 const docstring_str_count =
 """
-str_count(column::String, pattern::Union{String, Regex})
+    str_count(column::String, pattern::Union{String, Regex})
 
 Count the number of non-overlapping occurrences of a pattern in a string.
 
-Arguments
-column: The string in which to count the pattern.
-pattern: A string or a regular expression to find within the string.
+# Arguments
+- `column`: The string in which to count the pattern.
+- `pattern`: A string or a regular expression to find within the string.
 The pattern can include special logic:
 
 Use | to represent "or" (e.g., "red|blue" counts any string that contains "red" or "blue").
@@ -116,15 +116,15 @@ julia> str_count("The blue sky is blue", "blue|sky")
 
 const docstring_str_squish  =
 """
-str_squish(column::String)
+    str_squish(column::String)
 
 Squish a string, removing consecutive whitespace and replacing it with a single space, as well as removing leading and trailing whitespace.
 
-Arguments
-column: The string to be squished.
+#Arguments
+`column`: The string to be squished.
 Returns
 A squished version of column.
-Examples
+# Examples
 ```jldoctest
 julia> str_squish("  This    is a string   with   spaces   ")
 "This is a string with spaces"
@@ -137,17 +137,17 @@ julia> str_squish("  Leading and trailing spaces   ")
 
 const docstring_str_equal  =
 """
-str_equal(column::String, pattern::Union{String, Regex})
+    str_equal(column::String, pattern::Union{String, Regex})
 
 Check if a string exactly equals to a pattern, or for regular expressions, if the pattern can match the entire string.
 
-Arguments
-column: The string to be checked.
-pattern: The pattern to compare against. Can be a plain string or a Regex.
+# Arguments
+- `column`: The string to be checked.
+- `pattern`: The pattern to compare against. Can be a plain string or a Regex.
 Returns
 true if column equals to pattern (for plain strings) or if pattern can match the entire column (for Regex).
 false otherwise.
-Examples
+# Examples
 ```jldoctest
 julia> str_equal("hello", "hello")
 true
@@ -156,33 +156,33 @@ true
 
 const docstring_str_subset  =
 """
-str_subset(column::String, pattern::Union{String, Regex})
+    str_subset(column::String, pattern::Union{String, Regex})
 
 Subset a string based on the presence of pattern. If the pattern exists within the string, the function will return the original string. If the pattern is not found within the string, the function will return an empty string.
 
-Arguments
-column: The string from which to extract the subset.
-pattern: The pattern to search for within the string. Can be a plain string or a Regex.
+# Arguments
+- `column`: The string from which to extract the subset.
+- `pattern`: The pattern to search for within the string. Can be a plain string or a Regex.
 Returns
 The original string if the pattern is found within it, otherwise an empty string.
-Examples
+# Examples
 ```jldoctest
 julia> str_subset("Hello world!", "world")
-true
+"Hello world!"
 
 julia> str_subset("Hello world!", "universe")
-false
+""
 ```
 """
 
 const docstring_str_to_lower  =
 """
-str_to_lower(s::AbstractString)
+    str_to_lower(s::AbstractString)
 
 Convert all characters in a string to lower case.
 
 Arguments
-s: Input string.
+- `s`: Input string.
 Returns
 String with all characters converted to lower case.
 Examples
@@ -194,12 +194,12 @@ julia> str_to_lower("Hello World!")
 
 const docstring_str_to_upper  =
 """
-str_to_upper(s::AbstractString)
+    str_to_upper(s::AbstractString)
 
 Convert all characters in a string to upper case.
 
 Arguments
-s: Input string.
+- `s`: Input string.
 Returns
 String with all characters converted to upper case.
 Examples
@@ -213,12 +213,11 @@ julia> str_to_upper("Hello World!")
 
 const docstring_str_remove_all  =
 """
-
-str_remove_all(column::String, pattern::Union{String, Regex})
+    str_remove_all(column::String, pattern::Union{String, Regex})
 
 Remove all occurrences of the pattern in the string.
 
-Arguments
+# Arguments
 - `column`: The string from which the pattern should be removed.
 - `pattern`: The pattern which should be removed from the string. Can be a string or a regular expression.
 
