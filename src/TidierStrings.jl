@@ -7,7 +7,7 @@ include("strings_docstrings.jl")
 """
 $docstring_str_detect
 """
-function str_detect(column::Union{Missing, String}, pattern::Union{String, Regex})
+function str_detect(column, pattern::Union{String, Regex})
     if ismissing(column)
         return(column)
     end 
@@ -38,7 +38,7 @@ end
 """
 $docstring_str_replace
 """
-function str_replace(column::Union{Missing, String}, pattern::Union{String, Regex}, replacement::String)
+function str_replace(column, pattern::Union{String, Regex}, replacement::String)
     if ismissing(column)
         return(column)
     end 
@@ -71,7 +71,7 @@ end
 """
 $docstring_str_replace_all
 """
-function str_replace_all(column::Union{Missing, String}, pattern::Union{String, Regex}, replacement::String)
+function str_replace_all(column, pattern::Union{String, Regex}, replacement::String)
     if ismissing(column)
         return(column)
     end 
@@ -98,7 +98,7 @@ end
 """
 $docstring_str_remove
 """
-function str_remove(column::Union{Missing, String}, pattern::Union{String, Regex})
+function str_remove(column, pattern::Union{String, Regex})
     if ismissing(column)
         return(column)
     end 
@@ -129,7 +129,7 @@ end
 """
 $docstring_str_remove_all
 """
-function str_remove_all(column::Union{Missing, String}, pattern::Union{String, Regex})
+function str_remove_all(column, pattern::Union{String, Regex})
     if ismissing(column)
         return(column)
     end 
@@ -153,7 +153,7 @@ end
 """
 $docstring_str_count
 """
-function str_count(column::Union{Missing, String}, pattern::Union{String, Regex})
+function str_count(column, pattern::Union{String, Regex})
     if ismissing(column)
         return(column)
     end 
@@ -172,7 +172,7 @@ end
 """
 $docstring_str_squish
 """
-function str_squish(column::Union{Missing, String})
+function str_squish(column)
     if ismissing(column)
         return(column)
     end
@@ -188,7 +188,7 @@ end
 """
 $docstring_str_equal
 """
-function str_equal(column::Union{Missing, String}, pattern::Union{String, Regex})
+function str_equal(column, pattern::Union{String, Regex})
     if ismissing(column)
         return(column)
     end 
@@ -206,7 +206,7 @@ end
 """
 $docstring_str_to_upper
 """
-function str_to_upper(s::Union{String, Missing})
+function str_to_upper(s)
     if ismissing(s)
         return(s)
     else
@@ -218,7 +218,7 @@ end
 """
 $docstring_str_to_lower
 """
-function str_to_lower(s::Union{String, Missing})
+function str_to_lower(s)
     if ismissing(s)
         return(s)
     else
@@ -243,7 +243,7 @@ end
 """
 $docstring_str_subset
 """
-function str_subset(column::Union{Vector{String}, String}, pattern::Union{String, Regex})
+function str_subset(column, pattern::Union{String, Regex})
     processor = x -> begin
         if ismissing(x)
             return x
