@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.7">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.2">
     
     
       
@@ -26,10 +26,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.d451bc0e.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a5377069.min.css">
       
       
 
@@ -465,22 +465,22 @@
 <p><a id='Index-1'></a></p>
 <h2 id="index">Index<a class="headerlink" href="#index" title="Permanent link">¤</a></h2>
 <ul>
-<li><a href="./#TidierStrings.str_count-Tuple{Union{Missing, String}, Union{Regex, String}}"><code>TidierStrings.str_count</code></a></li>
-<li><a href="./#TidierStrings.str_detect-Tuple{Union{Missing, String}, Union{Regex, String}}"><code>TidierStrings.str_detect</code></a></li>
-<li><a href="./#TidierStrings.str_equal-Tuple{Union{Missing, String}, Union{Regex, String}}"><code>TidierStrings.str_equal</code></a></li>
-<li><a href="./#TidierStrings.str_remove-Tuple{Union{Missing, String}, Union{Regex, String}}"><code>TidierStrings.str_remove</code></a></li>
-<li><a href="./#TidierStrings.str_remove_all-Tuple{Union{Missing, String}, Union{Regex, String}}"><code>TidierStrings.str_remove_all</code></a></li>
-<li><a href="./#TidierStrings.str_replace-Tuple{Union{Missing, String}, Union{Regex, String}, String}"><code>TidierStrings.str_replace</code></a></li>
-<li><a href="./#TidierStrings.str_replace_all-Tuple{Union{Missing, String}, Union{Regex, String}, String}"><code>TidierStrings.str_replace_all</code></a></li>
-<li><a href="./#TidierStrings.str_squish-Tuple{Union{Missing, String}}"><code>TidierStrings.str_squish</code></a></li>
-<li><a href="./#TidierStrings.str_subset-Tuple{Union{String, Vector{String}}, Union{Regex, String}}"><code>TidierStrings.str_subset</code></a></li>
-<li><a href="./#TidierStrings.str_to_lower-Tuple{Union{Missing, String}}"><code>TidierStrings.str_to_lower</code></a></li>
-<li><a href="./#TidierStrings.str_to_upper-Tuple{Union{Missing, String}}"><code>TidierStrings.str_to_upper</code></a></li>
+<li><a href="./#TidierStrings.str_count-Tuple{Any, Union{Regex, String}}"><code>TidierStrings.str_count</code></a></li>
+<li><a href="./#TidierStrings.str_detect-Tuple{Any, Union{Regex, String}}"><code>TidierStrings.str_detect</code></a></li>
+<li><a href="./#TidierStrings.str_equal-Tuple{Any, Union{Regex, String}}"><code>TidierStrings.str_equal</code></a></li>
+<li><a href="./#TidierStrings.str_remove-Tuple{Any, Union{Regex, String}}"><code>TidierStrings.str_remove</code></a></li>
+<li><a href="./#TidierStrings.str_remove_all-Tuple{Any, Union{Regex, String}}"><code>TidierStrings.str_remove_all</code></a></li>
+<li><a href="./#TidierStrings.str_replace-Tuple{Any, Union{Regex, String}, String}"><code>TidierStrings.str_replace</code></a></li>
+<li><a href="./#TidierStrings.str_replace_all-Tuple{Any, Union{Regex, String}, String}"><code>TidierStrings.str_replace_all</code></a></li>
+<li><a href="./#TidierStrings.str_squish-Tuple{Any}"><code>TidierStrings.str_squish</code></a></li>
+<li><a href="./#TidierStrings.str_subset-Tuple{Any, Union{Regex, String}}"><code>TidierStrings.str_subset</code></a></li>
+<li><a href="./#TidierStrings.str_to_lower-Tuple{Any}"><code>TidierStrings.str_to_lower</code></a></li>
+<li><a href="./#TidierStrings.str_to_upper-Tuple{Any}"><code>TidierStrings.str_to_upper</code></a></li>
 </ul>
 <p><a id='Reference-Exported-functions'></a></p>
 <p><a id='Reference-Exported-functions-1'></a></p>
 <h2 id="reference-exported-functions">Reference - Exported functions<a class="headerlink" href="#reference-exported-functions" title="Permanent link">¤</a></h2>
-<p><a id='TidierStrings.str_count-Tuple{Union{Missing, String}, Union{Regex, String}}' href='#TidierStrings.str_count-Tuple{Union{Missing, String}, Union{Regex, String}}'>#</a>
+<p><a id='TidierStrings.str_count-Tuple{Any, Union{Regex, String}}' href='#TidierStrings.str_count-Tuple{Any, Union{Regex, String}}'>#</a>
 <strong><code>TidierStrings.str_count</code></strong> &mdash; <em>Method</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="n">str_count</span><span class="p">(</span><span class="n">column</span><span class="o">::</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">pattern</span><span class="o">::</span><span class="kt">Union</span><span class="p">{</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="kt">Regex</span><span class="p">})</span>
 </code></pre></div>
@@ -501,8 +501,8 @@
 <span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_count</span><span class="p">(</span><span class="s">&quot;The blue sky is blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;blue|sky&quot;</span><span class="p">)</span>
 <span class="go">3</span>
 </code></pre></div>
-<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/715d17bb84b6ef4eb2104ea6cbf50bf37785bfa3/src/TidierStrings.jl#L153-L177' class='documenter-source'>source</a><br></p>
-<p><a id='TidierStrings.str_detect-Tuple{Union{Missing, String}, Union{Regex, String}}' href='#TidierStrings.str_detect-Tuple{Union{Missing, String}, Union{Regex, String}}'>#</a>
+<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/2c81f569ee3ea33b80c0e77f5adda03399751b20/src/TidierStrings.jl#L153-L177' class='documenter-source'>source</a><br></p>
+<p><a id='TidierStrings.str_detect-Tuple{Any, Union{Regex, String}}' href='#TidierStrings.str_detect-Tuple{Any, Union{Regex, String}}'>#</a>
 <strong><code>TidierStrings.str_detect</code></strong> &mdash; <em>Method</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="n">str_detect</span><span class="p">(</span><span class="n">column</span><span class="o">::</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">pattern</span><span class="o">::</span><span class="kt">Union</span><span class="p">{</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="kt">Regex</span><span class="p">})</span>
 </code></pre></div>
@@ -529,8 +529,8 @@
 <span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_detect</span><span class="p">(</span><span class="s">&quot;The sky is blue and the sun is red&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;blue&amp;red&quot;</span><span class="p">)</span>
 <span class="go">true</span>
 </code></pre></div>
-<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/715d17bb84b6ef4eb2104ea6cbf50bf37785bfa3/src/TidierStrings.jl#L7-L38' class='documenter-source'>source</a><br></p>
-<p><a id='TidierStrings.str_equal-Tuple{Union{Missing, String}, Union{Regex, String}}' href='#TidierStrings.str_equal-Tuple{Union{Missing, String}, Union{Regex, String}}'>#</a>
+<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/2c81f569ee3ea33b80c0e77f5adda03399751b20/src/TidierStrings.jl#L7-L38' class='documenter-source'>source</a><br></p>
+<p><a id='TidierStrings.str_equal-Tuple{Any, Union{Regex, String}}' href='#TidierStrings.str_equal-Tuple{Any, Union{Regex, String}}'>#</a>
 <strong><code>TidierStrings.str_equal</code></strong> &mdash; <em>Method</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="n">str_equal</span><span class="p">(</span><span class="n">column</span><span class="o">::</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">pattern</span><span class="o">::</span><span class="kt">Union</span><span class="p">{</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="kt">Regex</span><span class="p">})</span>
 </code></pre></div>
@@ -545,8 +545,8 @@
 <div class="highlight"><pre><span></span><code><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_equal</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
 <span class="go">true</span>
 </code></pre></div>
-<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/715d17bb84b6ef4eb2104ea6cbf50bf37785bfa3/src/TidierStrings.jl#L188-L204' class='documenter-source'>source</a><br></p>
-<p><a id='TidierStrings.str_remove-Tuple{Union{Missing, String}, Union{Regex, String}}' href='#TidierStrings.str_remove-Tuple{Union{Missing, String}, Union{Regex, String}}'>#</a>
+<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/2c81f569ee3ea33b80c0e77f5adda03399751b20/src/TidierStrings.jl#L188-L204' class='documenter-source'>source</a><br></p>
+<p><a id='TidierStrings.str_remove-Tuple{Any, Union{Regex, String}}' href='#TidierStrings.str_remove-Tuple{Any, Union{Regex, String}}'>#</a>
 <strong><code>TidierStrings.str_remove</code></strong> &mdash; <em>Method</em>.</p>
 <p>str_remove(column::String, pattern::Union{String, Regex})</p>
 <p>Remove the first occurrence of the pattern in the string.</p>
@@ -563,8 +563,8 @@
 <span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_remove</span><span class="p">(</span><span class="n">column</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; strings&quot;</span><span class="p">)</span>
 <span class="go">&quot;I love tidier strings&quot;</span>
 </code></pre></div>
-<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/715d17bb84b6ef4eb2104ea6cbf50bf37785bfa3/src/TidierStrings.jl#L98-L118' class='documenter-source'>source</a><br></p>
-<p><a id='TidierStrings.str_remove_all-Tuple{Union{Missing, String}, Union{Regex, String}}' href='#TidierStrings.str_remove_all-Tuple{Union{Missing, String}, Union{Regex, String}}'>#</a>
+<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/2c81f569ee3ea33b80c0e77f5adda03399751b20/src/TidierStrings.jl#L98-L118' class='documenter-source'>source</a><br></p>
+<p><a id='TidierStrings.str_remove_all-Tuple{Any, Union{Regex, String}}' href='#TidierStrings.str_remove_all-Tuple{Any, Union{Regex, String}}'>#</a>
 <strong><code>TidierStrings.str_remove_all</code></strong> &mdash; <em>Method</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="n">str_remove_all</span><span class="p">(</span><span class="n">column</span><span class="o">::</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">pattern</span><span class="o">::</span><span class="kt">Union</span><span class="p">{</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="kt">Regex</span><span class="p">})</span>
 </code></pre></div>
@@ -582,8 +582,8 @@
 <span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_remove_all</span><span class="p">(</span><span class="n">column</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; strings&quot;</span><span class="p">)</span>
 <span class="go">&quot;I love tidier , I love tidier &quot;</span>
 </code></pre></div>
-<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/715d17bb84b6ef4eb2104ea6cbf50bf37785bfa3/src/TidierStrings.jl#L129-L149' class='documenter-source'>source</a><br></p>
-<p><a id='TidierStrings.str_replace-Tuple{Union{Missing, String}, Union{Regex, String}, String}' href='#TidierStrings.str_replace-Tuple{Union{Missing, String}, Union{Regex, String}, String}'>#</a>
+<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/2c81f569ee3ea33b80c0e77f5adda03399751b20/src/TidierStrings.jl#L129-L149' class='documenter-source'>source</a><br></p>
+<p><a id='TidierStrings.str_replace-Tuple{Any, Union{Regex, String}, String}' href='#TidierStrings.str_replace-Tuple{Any, Union{Regex, String}, String}'>#</a>
 <strong><code>TidierStrings.str_replace</code></strong> &mdash; <em>Method</em>.</p>
 <p>str_replace(column::String, pattern::Union{String, Regex}, replacement::String)</p>
 <p>Replace the first occurrence of a pattern in a string with a specified string.</p>
@@ -598,8 +598,8 @@
 <span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_replace</span><span class="p">(</span><span class="s">&quot;The sky is blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;blue|sky&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span>
 <span class="go">&quot;The red is blue&quot;</span>
 </code></pre></div>
-<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/715d17bb84b6ef4eb2104ea6cbf50bf37785bfa3/src/TidierStrings.jl#L38-L63' class='documenter-source'>source</a><br></p>
-<p><a id='TidierStrings.str_replace_all-Tuple{Union{Missing, String}, Union{Regex, String}, String}' href='#TidierStrings.str_replace_all-Tuple{Union{Missing, String}, Union{Regex, String}, String}'>#</a>
+<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/2c81f569ee3ea33b80c0e77f5adda03399751b20/src/TidierStrings.jl#L38-L63' class='documenter-source'>source</a><br></p>
+<p><a id='TidierStrings.str_replace_all-Tuple{Any, Union{Regex, String}, String}' href='#TidierStrings.str_replace_all-Tuple{Any, Union{Regex, String}, String}'>#</a>
 <strong><code>TidierStrings.str_replace_all</code></strong> &mdash; <em>Method</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="n">str_replace_all</span><span class="p">(</span><span class="n">column</span><span class="o">::</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">pattern</span><span class="o">::</span><span class="kt">Union</span><span class="p">{</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="kt">Regex</span><span class="p">},</span><span class="w"> </span><span class="n">replacement</span><span class="o">::</span><span class="kt">String</span><span class="p">)</span>
 </code></pre></div>
@@ -621,8 +621,8 @@
 <span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_replace_all</span><span class="p">(</span><span class="s">&quot;The blue sky is blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;blue|sky&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span>
 <span class="go">&quot;The red red is red&quot;</span>
 </code></pre></div>
-<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/715d17bb84b6ef4eb2104ea6cbf50bf37785bfa3/src/TidierStrings.jl#L71-L96' class='documenter-source'>source</a><br></p>
-<p><a id='TidierStrings.str_squish-Tuple{Union{Missing, String}}' href='#TidierStrings.str_squish-Tuple{Union{Missing, String}}'>#</a>
+<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/2c81f569ee3ea33b80c0e77f5adda03399751b20/src/TidierStrings.jl#L71-L96' class='documenter-source'>source</a><br></p>
+<p><a id='TidierStrings.str_squish-Tuple{Any}' href='#TidierStrings.str_squish-Tuple{Any}'>#</a>
 <strong><code>TidierStrings.str_squish</code></strong> &mdash; <em>Method</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="n">str_squish</span><span class="p">(</span><span class="n">column</span><span class="o">::</span><span class="kt">String</span><span class="p">)</span>
 </code></pre></div>
@@ -635,8 +635,8 @@
 <span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_squish</span><span class="p">(</span><span class="s">&quot;  Leading and trailing spaces   &quot;</span><span class="p">)</span>
 <span class="go">&quot;Leading and trailing spaces&quot;</span>
 </code></pre></div>
-<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/715d17bb84b6ef4eb2104ea6cbf50bf37785bfa3/src/TidierStrings.jl#L172-L189' class='documenter-source'>source</a><br></p>
-<p><a id='TidierStrings.str_subset-Tuple{Union{String, Vector{String}}, Union{Regex, String}}' href='#TidierStrings.str_subset-Tuple{Union{String, Vector{String}}, Union{Regex, String}}'>#</a>
+<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/2c81f569ee3ea33b80c0e77f5adda03399751b20/src/TidierStrings.jl#L172-L189' class='documenter-source'>source</a><br></p>
+<p><a id='TidierStrings.str_subset-Tuple{Any, Union{Regex, String}}' href='#TidierStrings.str_subset-Tuple{Any, Union{Regex, String}}'>#</a>
 <strong><code>TidierStrings.str_subset</code></strong> &mdash; <em>Method</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="n">str_subset</span><span class="p">(</span><span class="n">column</span><span class="o">::</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">pattern</span><span class="o">::</span><span class="kt">Union</span><span class="p">{</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="kt">Regex</span><span class="p">})</span>
 </code></pre></div>
@@ -654,8 +654,8 @@
 <span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_subset</span><span class="p">(</span><span class="s">&quot;Hello world!&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;universe&quot;</span><span class="p">)</span>
 <span class="go">&quot;&quot;</span>
 </code></pre></div>
-<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/715d17bb84b6ef4eb2104ea6cbf50bf37785bfa3/src/TidierStrings.jl#L243-L261' class='documenter-source'>source</a><br></p>
-<p><a id='TidierStrings.str_to_lower-Tuple{Union{Missing, String}}' href='#TidierStrings.str_to_lower-Tuple{Union{Missing, String}}'>#</a>
+<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/2c81f569ee3ea33b80c0e77f5adda03399751b20/src/TidierStrings.jl#L243-L261' class='documenter-source'>source</a><br></p>
+<p><a id='TidierStrings.str_to_lower-Tuple{Any}' href='#TidierStrings.str_to_lower-Tuple{Any}'>#</a>
 <strong><code>TidierStrings.str_to_lower</code></strong> &mdash; <em>Method</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="n">str_to_lower</span><span class="p">(</span><span class="n">s</span><span class="o">::</span><span class="kt">AbstractString</span><span class="p">)</span>
 </code></pre></div>
@@ -668,8 +668,8 @@
 <div class="highlight"><pre><span></span><code><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_to_lower</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">)</span>
 <span class="go">&quot;hello world!&quot;</span>
 </code></pre></div>
-<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/715d17bb84b6ef4eb2104ea6cbf50bf37785bfa3/src/TidierStrings.jl#L218-L232' class='documenter-source'>source</a><br></p>
-<p><a id='TidierStrings.str_to_upper-Tuple{Union{Missing, String}}' href='#TidierStrings.str_to_upper-Tuple{Union{Missing, String}}'>#</a>
+<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/2c81f569ee3ea33b80c0e77f5adda03399751b20/src/TidierStrings.jl#L218-L232' class='documenter-source'>source</a><br></p>
+<p><a id='TidierStrings.str_to_upper-Tuple{Any}' href='#TidierStrings.str_to_upper-Tuple{Any}'>#</a>
 <strong><code>TidierStrings.str_to_upper</code></strong> &mdash; <em>Method</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="n">str_to_upper</span><span class="p">(</span><span class="n">s</span><span class="o">::</span><span class="kt">AbstractString</span><span class="p">)</span>
 </code></pre></div>
@@ -682,7 +682,7 @@
 <div class="highlight"><pre><span></span><code><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">str_to_upper</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">)</span>
 <span class="go">&quot;HELLO WORLD!&quot;</span>
 </code></pre></div>
-<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/715d17bb84b6ef4eb2104ea6cbf50bf37785bfa3/src/TidierStrings.jl#L206-L221' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/TidierOrg/TidierStrings.jl/blob/2c81f569ee3ea33b80c0e77f5adda03399751b20/src/TidierStrings.jl#L206-L221' class='documenter-source'>source</a><br></p>
 <p><a id='Reference-Internal-functions'></a></p>
 <p><a id='Reference-Internal-functions-1'></a></p>
 <h2 id="reference-internal-functions">Reference - Internal functions<a class="headerlink" href="#reference-internal-functions" title="Permanent link">¤</a></h2>
@@ -713,7 +713,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../examples/generated/UserGuide/supported_functions/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Supported Functions" rel="prev">
+          <a href="../examples/generated/UserGuide/supported_functions/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Supported Functions">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -779,10 +779,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.annotate", "navigation.top", "navigation.footer", "search.highlight", "search.share", "search.suggest", "toc.follow", "header.autohide"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.annotate", "navigation.top", "navigation.footer", "search.highlight", "search.share", "search.suggest", "toc.follow", "header.autohide"], "search": "../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      <script src="../assets/javascripts/bundle.726fbb30.min.js"></script>
       
         <script src="../javascripts/mathjax.js"></script>
       
