@@ -45,7 +45,7 @@ function str_replace(column, pattern::Union{String, Regex}, replacement::String)
 
     if pattern isa String
         patterns = split(pattern, '|')
-        first_occurrences = [(p, findfirst(Regex(p * "\\b"), column)) for p in patterns]
+        first_occurrences = [(p, findfirst(Regex(p), column)) for p in patterns]
         # Filter out patterns that were not found
         found_occurrences = filter(x -> x[2] !== nothing, first_occurrences)
         # If none of the patterns are found, return the original column
@@ -55,7 +55,7 @@ function str_replace(column, pattern::Union{String, Regex}, replacement::String)
         # Get the first pattern among the found patterns
         first_pattern = sort(found_occurrences, by = x -> x[2].start)[1][1]
         # Replace the first occurrence of the first found pattern
-        column = replace(column, Regex(first_pattern * "\\b") => replacement, count = 1)
+        column = replace(column, Regex(first_pattern) => replacement, count = 1)
     else
         # For regular expressions, directly use replace
         column = replace(column, pattern => replacement, count = 1) # Only replace the first occurrence
@@ -80,12 +80,12 @@ function str_replace_all(column, pattern::Union{String, Regex}, replacement::Str
         patterns = split(pattern, '|')
         for p in patterns
             # Convert the pattern to a Regex object
-            regex = Regex(strip(p) * "\\b")
+            regex = Regex(strip(p))
             column = replace(column, regex => replacement)
         end
     else
         # For regular expressions, directly use replace
-        regex = Regex(pattern.pattern * "\\b")
+        regex = Regex(pattern.pattern)
         column = replace(column, regex => replacement)
     end
     # Replace multiple consecutive spaces with a single space
@@ -105,7 +105,7 @@ function str_remove(column, pattern::Union{String, Regex})
 
     if pattern isa String
         patterns = split(pattern, '|')
-        first_occurrences = [(p, findfirst(Regex(p * "\\b"), column)) for p in patterns]
+        first_occurrences = [(p, findfirst(Regex(p), column)) for p in patterns]
         # Filter out patterns that were not found
         found_occurrences = filter(x -> x[2] !== nothing, first_occurrences)
         # If none of the patterns are found, return the original column
@@ -115,7 +115,7 @@ function str_remove(column, pattern::Union{String, Regex})
         # Get the first pattern among the found patterns
         first_pattern = sort(found_occurrences, by = x -> x[2].start)[1][1]
         # Remove the first occurrence of the first found pattern
-        column = replace(column, Regex(first_pattern * "\\b") => "", count = 1)
+        column = replace(column, Regex(first_pattern) => "", count = 1)
     else
         # For regular expressions, directly use replace
         column = replace(column, pattern => "", count = 1) # Only remove the first occurrence
@@ -137,7 +137,7 @@ function str_remove_all(column, pattern::Union{String, Regex})
     if pattern isa String
         patterns = split(pattern, '|')
         for p in patterns
-            column = replace(column, Regex(strip(p) * "\\b") => "")
+            column = replace(column, Regex(strip(p)) => "")
         end
     else
         # For regular expressions, directly use replace
