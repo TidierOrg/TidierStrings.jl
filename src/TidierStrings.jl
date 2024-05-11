@@ -1,6 +1,7 @@
 module TidierStrings
 
-export str_detect, str_replace, str_replace_all, str_remove_all, str_remove, str_count, str_squish, str_equal, str_to_upper, str_to_lower, str_split, str_subset, str_to_title, str_to_sentence, str_dup, str_length, str_width
+export str_detect, str_replace, str_replace_all, str_remove_all, str_remove, str_count, str_squish, str_equal, str_to_upper, str_to_lower, str_split, str_subset, 
+       str_to_title, str_to_sentence, str_dup, str_length, str_width, str_trim
 
 include("strings_docstrings.jl")
 
@@ -239,6 +240,9 @@ end
 #end
 
 
+"""
+$docstring_str_to_title
+"""
 function str_to_title(s::AbstractString)
     if ismissing(s)
         return(s)
@@ -248,9 +252,12 @@ function str_to_title(s::AbstractString)
 end
 
 
+"""
+$docstring_str_to_sentence
+"""
 function str_to_sentence(s::AbstractString)
     if ismissing(s)
-        return s
+        return(s)
     else
         sentences = split(s, r"(?<=[.!?])\s+")
         capitalized_sentences = [uppercase(first(sentence)) * lowercase(sentence[2:end]) for sentence in sentences]
@@ -259,18 +266,59 @@ function str_to_sentence(s::AbstractString)
 end
 
 
+"""
+$docstring_str_dup
+"""
 function str_dup(s::AbstractString, times::Integer)
+    if ismissing(s)
+        return(s)
+    end
+
     return repeat(s, times)
 end
 
 
+"""
+$docstring_str_length
+"""
 function str_length(s::AbstractString)
+    if ismissing(s)
+        return(s)
+    end
+
     return length(s)
 end
 
 
+"""
+$docstring_str_width
+"""
 function str_width(s::AbstractString)
+    if ismissing(s)
+        return(s)
+    end
+
     return textwidth(s)
+end
+
+
+"""
+$docstring_str_trim
+"""
+function str_trim(s::AbstractString, side::String="both")
+    if ismissing(s)
+        return(s)
+    end
+
+    if side == "both"
+        return strip(s)
+    elseif side == "left"
+        return lstrip(s)
+    elseif side == "right"
+        return rstrip(s)
+    else
+        throw(ArgumentError("side must be one of 'both', 'left', or 'right'"))
+    end
 end
 
 
