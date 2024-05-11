@@ -47,6 +47,12 @@ TidierStrings.jl currently supports:
 - `str_equal()`
 - `str_to_upper()`
 - `str_to_lower()`
+- `str_to_title()`
+- `str_to_sentence()`
+- `str_to_dup()`
+- `str_to_length()`
+- `str_to_width()`
+- `str_to_trim()`
 - `str_subset()`
 
 ## Examples

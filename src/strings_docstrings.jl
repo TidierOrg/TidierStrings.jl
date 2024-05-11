@@ -34,7 +34,7 @@ true
 
 const docstring_str_replace  =
 """
-str_replace(column::String, pattern::Union{String, Regex}, replacement::String)
+    str_replace(column::String, pattern::Union{String, Regex}, replacement::String)
 
 Replace the first occurrence of a pattern in a string with a specified string.
 
@@ -236,7 +236,7 @@ julia> str_remove_all(column, " strings")
 
 const docstring_str_remove  =
 """
-str_remove(column::String, pattern::Union{String, Regex})
+    str_remove(column::String, pattern::Union{String, Regex})
 
 Remove the first occurrence of the pattern in the string.
 
@@ -257,3 +257,126 @@ julia> str_remove(column, " strings")
 ```
 """
 
+const docstring_str_to_title  =
+"""
+    str_to_title(s::AbstractString)
+
+Convert the first character of each word in a string to upper case.
+
+Arguments
+- `s`: Input string.
+
+Returns
+A string with the first character of each word converted to upper case.
+
+Examples
+```jldoctest
+julia> str_to_title("hello world!")
+"Hello World!"
+
+julia> str_to_title("This is a title")
+"This Is A Title"
+```
+"""
+
+const docstring_str_to_sentence = 
+"""
+    str_to_sentence(s::AbstractString)
+
+Convert the first character of each sentence in a string to upper case.
+
+Arguments
+- `s`: Input string.
+
+Returns
+A string with the first character of each sentence converted to upper case.
+
+Examples
+```jldoctest
+julia> str_to_sentence("hello world!")
+"Hello world!"
+
+julia> str_to_sentence("a sentence mUst starT With A capital letter.")
+"A sentence must start With a capital letter."
+"""
+
+const docstring_str_dup = 
+"""
+    str_dup(s::AbstractString, times::Int)
+
+Duplicate the string `s` `times` times.
+
+Arguments
+- `s`: Input string.
+- `times`: Number of times to duplicate the string.
+
+Returns
+A string with the string `s` duplicated `times` times.
+
+Examples
+```jldoctest
+julia> str_dup("hello", 3)
+"hellohellohello"
+"""
+
+const docstring_str_length = 
+"""
+    str_length(s::AbstractString)
+
+Return the length of the string `s`.
+
+Arguments
+- `s`: Input string.
+
+Returns
+The length of the string `s`.
+
+Examples
+```jldoctest
+julia> str_length("hello world! 😊")
+14
+
+julia> str_length("😊")
+1
+```
+"""
+
+const docstring_str_width = 
+""" 
+    str_width(s::AbstractString)
+
+Return the width of the string `s`.
+
+Arguments
+- `s`: Input string.
+
+Returns
+The width of the string `s`.
+
+Examples
+```jldoctest
+julia> str_width("hello world! 😊")
+15
+
+julia> str_width("😊")
+2
+"""
+
+const docstring_str_trim = 
+"""
+    str_trim(s::AbstractString, side::String="both")
+
+Removes all whitespace from the string `s` on the left and right side, or on both sides if `side` is "both".
+
+Arguments
+- `s`: Input string.
+- `side`: The side(s) from which to remove whitespace. Can be "left", "right", or "both".
+
+Returns
+The string `s` with all whitespace removed on the left and right side, or on both sides if `side` is "both".
+
+Examples
+```jldoctest
+julia> str_trim("  hello world! 😊  ")
+"hello world! 😊"
+"""
