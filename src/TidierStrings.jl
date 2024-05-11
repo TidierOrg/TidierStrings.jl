@@ -1,6 +1,6 @@
 module TidierStrings
 
-export str_detect, str_replace, str_replace_all, str_remove_all, str_remove, str_count, str_squish, str_equal, str_to_upper, str_to_lower, str_split, str_subset
+export str_detect, str_replace, str_replace_all, str_remove_all, str_remove, str_count, str_squish, str_equal, str_to_upper, str_to_lower, str_split, str_subset, str_to_title, str_to_sentence, str_dup, str_length, str_width
 
 include("strings_docstrings.jl")
 
@@ -238,6 +238,40 @@ end
 #    return split_parts[1:min(end, n)]
 #end
 
+
+function str_to_title(s::AbstractString)
+    if ismissing(s)
+        return(s)
+    else
+        return titlecase(s)
+    end
+end
+
+
+function str_to_sentence(s::AbstractString)
+    if ismissing(s)
+        return s
+    else
+        sentences = split(s, r"(?<=[.!?])\s+")
+        capitalized_sentences = [uppercase(first(sentence)) * lowercase(sentence[2:end]) for sentence in sentences]
+        return join(capitalized_sentences, " ")
+    end
+end
+
+
+function str_dup(s::AbstractString, times::Integer)
+    return repeat(s, times)
+end
+
+
+function str_length(s::AbstractString)
+    return length(s)
+end
+
+
+function str_width(s::AbstractString)
+    return textwidth(s)
+end
 
 
 """
