@@ -395,8 +395,8 @@ The string `string` with special characters escaped.
 
 Examples
 ```jldoctest
-julia> str_escape("This is a string with special characters: \\ .* + ? | ( ) [ ] { } ^ \$")
-"This is a string with special characters: \\\\ \\. \\* \\+ \\? \\| \\( \\) \\[ \\] \\{ \\} \\^ \\$"
+julia> str_escape("This is a string with special characters: \\ .* + ? | ( ) [ ] { } ^")
+"This is a string with special characters: \\\\ \\. \\* \\+ \\? \\| \\( \\) \\[ \\] \\{ \\} \\^"
 ```
 """
 

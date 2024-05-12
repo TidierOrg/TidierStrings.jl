@@ -329,7 +329,7 @@ function str_escape(string::AbstractString)
         return(string)
     end
 
-    metacharacters = ['\\', '.', '*', '+', '?', '|', '(', ')', '[', ']', '{', '}', '^', '$']
+    metacharacters = ['\\', '.', '*', '+', '?', '|', '(', ')', '[', ']', '{', '}', '^']
     escaped_string = join([c == '\\' ? "\\\\" : c in metacharacters ? "\\$c" : c for c in string], "")
 
     return escaped_string
