@@ -25,5 +25,4 @@ This package includes:
 - `str_to_trim()`
 - `str_subset()`
 - `str_unique()`
-- `str_escape()`
 - `word()`

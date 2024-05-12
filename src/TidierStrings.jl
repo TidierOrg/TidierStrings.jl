@@ -1,7 +1,7 @@
 module TidierStrings
 
 export str_detect, str_replace, str_replace_all, str_remove_all, str_remove, str_count, str_squish, str_equal, str_to_upper, str_to_lower, str_split, str_subset, 
-       str_to_title, str_to_sentence, str_dup, str_length, str_width, str_trim, str_unique, str_escape, word
+       str_to_title, str_to_sentence, str_dup, str_length, str_width, str_trim, str_unique, word
 
 include("strings_docstrings.jl")
 
@@ -319,20 +319,6 @@ function str_trim(s::AbstractString, side::String="both")
     else
         throw(ArgumentError("side must be one of 'both', 'left', or 'right'"))
     end
-end
-
-"""
-$docstring_str_escape
-"""
-function str_escape(string::AbstractString)
-    if ismissing(string)
-        return(string)
-    end
-
-    metacharacters = ['\\', '.', '*', '+', '?', '|', '(', ')', '[', ']', '{', '}', '^']
-    escaped_string = join([c == '\\' ? "\\\\" : c in metacharacters ? "\\$c" : c for c in string], "")
-
-    return escaped_string
 end
 
 """

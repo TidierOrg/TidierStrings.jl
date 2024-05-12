@@ -54,7 +54,6 @@ TidierStrings.jl currently supports:
 - `str_trim()`
 - `str_subset()`
 - `str_unique()`
-- `str_escape()`
 - `word()`
 
 ## Examples

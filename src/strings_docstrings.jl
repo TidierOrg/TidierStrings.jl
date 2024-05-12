@@ -381,25 +381,6 @@ julia> str_trim("  hello world! 😊  ")
 "hello world! 😊"
 """
 
-const docstring_str_escape = 
-"""
-    str_escape(string::AbstractString)
-
-Escape special characters in the string `string`.
-
-Arguments
-- `string`: Input string.
-
-Returns
-The string `string` with special characters escaped.
-
-Examples
-```jldoctest
-julia> str_escape("This is a string with special characters: \\ .* + ? | ( ) [ ] { } ^")
-"This is a string with special characters: \\\\ \\. \\* \\+ \\? \\| \\( \\) \\[ \\] \\{ \\} \\^"
-```
-"""
-
 const docstring_str_unique =
 """
     str_unique(strings::AbstractVector{<:AbstractString}; ignore_case::Bool=false)
