@@ -395,7 +395,8 @@ The string `string` with special characters escaped.
 
 Examples
 ```jldoctest
-julia> str_escape("")
+julia> str_escape("This is a string with special characters: \\ .* + ? | ( ) [ ] { } ^ \$")
+"This is a string with special characters: \\\\ \\. \\* \\+ \\? \\| \\( \\) \\[ \\] \\{ \\} \\^ \\$"
 ```
 """
 
@@ -414,10 +415,12 @@ A vector of unique strings from the input vector.
 
 Examples
 ```jldoctest
-julia> str_unique(["hello", "world", "hello"])
-2-element Array{String,1}:
- "hello"
- "world"
+julia> str_unique(["apple", "banana", "pear", "banana", "Apple"])
+4-element Vector{String}:
+ "apple"
+ "banana"
+ "pear"
+ "Apple"
 """
 
 const docstring_word = 
@@ -437,6 +440,21 @@ The extracted word from the string.
 
 Examples
 ```jldoctest
-julia> word("hello world!", 6, 10)
-"world"
+julia> word("Jane saw a cat", 1)
+1-element Vector{String}:
+ "Jane"
+
+julia> word("Jane saw a cat", 2)
+1-element Vector{String}:
+ "saw"
+
+julia> word("Jane saw a cat", -1)
+1-element Vector{String}:
+ "cat"
+
+julia> word("Jane saw a cat", 2, -1)
+3-element Vector{String}:
+ "saw"
+ "a"
+ "cat"
 """
