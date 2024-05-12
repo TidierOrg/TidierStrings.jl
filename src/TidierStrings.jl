@@ -321,6 +321,55 @@ function str_trim(s::AbstractString, side::String="both")
     end
 end
 
+"""
+$docstring_str_escape
+"""
+function str_escape(string::AbstractString)
+    if ismissing(string)
+        return(string)
+    end
+
+    metacharacters = ['\\', '.', '*', '+', '?', '|', '(', ')', '[', ']', '{', '}', '^', '$']
+    escaped_string = join([c == '\\' ? "\\\\" : c in metacharacters ? "\\$c" : c for c in string], "")
+
+    return escaped_string
+end
+
+"""
+$docstring_str_unique
+"""
+function str_unique(strings::AbstractVector{<:AbstractString}; ignore_case::Bool=false)
+    if ismissing(strings)
+        return(strings)
+    end
+
+    unique_strings = unique(strings)
+    if ignore_case
+        unique_strings = [unique_strings[findfirst(x -> lowercase(x) == lowercase(unique_string), strings)] for unique_string in unique_strings]
+    end
+    return unique_strings
+end
+
+"""
+$docstring_word
+"""
+function word(string::AbstractString, start_index::Int=1, end_index::Int=start_index, sep::AbstractString=" ")
+    if ismissing(string)
+        return(string)
+    end
+
+    words = split(string, sep)
+
+    if start_index < 0
+        start_index = length(words) + start_index + 1
+    end
+
+    if end_index < 0
+        end_index = length(words) + end_index + 1
+    end
+
+    return words[start_index:end_index]
+end
 
 """
 $docstring_str_subset
