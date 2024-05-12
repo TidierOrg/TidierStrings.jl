@@ -1,7 +1,7 @@
 module TidierStrings
 
 export str_detect, str_replace, str_replace_all, str_remove_all, str_remove, str_count, str_squish, str_equal, str_to_upper, str_to_lower, str_split, str_subset, 
-       str_to_title, str_to_sentence, str_dup, str_length, str_width, str_trim
+       str_to_title, str_to_sentence, str_dup, str_length, str_width, str_trim, str_unique, str_escape, word
 
 include("strings_docstrings.jl")
 
