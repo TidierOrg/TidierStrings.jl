@@ -380,3 +380,62 @@ Examples
 julia> str_trim("  hello world! 😊  ")
 "hello world! 😊"
 """
+
+const docstring_str_unique =
+"""
+    str_unique(strings::AbstractVector{<:AbstractString}; ignore_case::Bool=false)
+
+Remove duplicates from a vector of strings.
+
+Arguments
+- `strings`: Input vector of strings.
+- `ignore_case`: Whether to ignore case when comparing strings. Default is `false`.
+
+Returns
+A vector of unique strings from the input vector.
+
+Examples
+```jldoctest
+julia> str_unique(["apple", "banana", "pear", "banana", "Apple"])
+4-element Vector{String}:
+ "apple"
+ "banana"
+ "pear"
+ "Apple"
+"""
+
+const docstring_word = 
+"""
+    word(string::AbstractString, start_index::Int=1, end_index::Int=start_index, sep::AbstractString=" ")
+
+Extract a word from a string.
+
+Arguments
+- `string`: Input string.
+- `start_index`: The starting index of the word. Default is 1.
+- `end_index`: The ending index of the word. Default is `start_index`.
+- `sep`: The separator between the start and end indices. Default is a space.
+
+Returns
+The extracted word from the string.
+
+Examples
+```jldoctest
+julia> word("Jane saw a cat", 1)
+1-element Vector{String}:
+ "Jane"
+
+julia> word("Jane saw a cat", 2)
+1-element Vector{String}:
+ "saw"
+
+julia> word("Jane saw a cat", -1)
+1-element Vector{String}:
+ "cat"
+
+julia> word("Jane saw a cat", 2, -1)
+3-element Vector{String}:
+ "saw"
+ "a"
+ "cat"
+"""

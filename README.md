@@ -53,6 +53,8 @@ TidierStrings.jl currently supports:
 - `str_width()`
 - `str_trim()`
 - `str_subset()`
+- `str_unique()`
+- `word()`
 
 ## Examples
 
