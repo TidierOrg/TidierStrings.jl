@@ -19,10 +19,10 @@ This package includes:
 - `str_to_lower()`
 - `str_to_title()`
 - `str_to_sentence()`
-- `str_to_dup()`
-- `str_to_length()`
-- `str_to_width()`
-- `str_to_trim()`
+- `str_dup()`
+- `str_length()`
+- `str_width()`
+- `str_trim()`
 - `str_subset()`
 - `str_unique()`
 - `word()`
