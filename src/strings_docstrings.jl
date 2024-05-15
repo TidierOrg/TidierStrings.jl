@@ -464,16 +464,16 @@ Examples
 ```jldoctest
 julia> str_starts(["apple", "banana", "pear", "pineapple"], r"^p")  # [false, false, true, true]
 4-element Vector{Bool}:
-false
-false
-true
-true
+0
+0
+1
+1
 julia> str_starts(["apple", "banana", "pear", "pineapple"], r"^p", negate=true)  # [true, true, false, false]
 4-element Vector{Bool}:
-true
-true
-false
-false
+1
+1
+0
+0
 ```
 """
 
@@ -495,16 +495,16 @@ Examples
 ```jldoctest
 julia> str_ends(["apple", "banana", "pear", "pineapple"], r"e\$")  # [true, false, false, true]
 4-element Vector{Bool}:
-true
-false
-false
-true
+1
+0
+0
+1
 julia> str_ends(["apple", "banana", "pear", "pineapple"], r"e\$", negate=true)  # [false, true, true, false]
 4-element Vector{Bool}:
-false
-true
-true
-false
+0
+1
+1
+0
 ```
 """
 
@@ -526,13 +526,11 @@ An integer vector containing indices of matching strings.
 ```jldoctest
 julia> str_which(["apple", "banana", "pear", "pineapple"], r"a")  # [1, 3]
 2-element Vector{Int64}:
- 1
- 3
-julia> str_which(["apple", "banana", "pear", "pineapple"], r"a", negate=true)  # [2, 4]
-2-element Vector{Int64}:
- 2
- 4
+1
+3
+julia> str_which(["apple", "banana", "pear", "pineapple"], r"a", negate=true)  # []
+Int64[]
 julia> str_which(["apple", "banana", "pear", "pineapple"], "a", negate=true)  # []
-0-element Vector{Int64}:
+Int64[]
 ```
 """
