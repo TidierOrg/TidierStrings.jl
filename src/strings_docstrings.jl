@@ -297,7 +297,7 @@ julia> str_to_sentence("hello world!")
 "Hello world!"
 
 julia> str_to_sentence("a sentence mUst starT With A capital letter.")
-"A sentence must start With a capital letter."
+"A sentence must start with a capital letter."
 ```
 """
 
@@ -427,19 +427,19 @@ The extracted word from the string.
 Examples
 ```jldoctest
 julia> word("Jane saw a cat", 1)
-1-element Vector{String}:
+1-element Vector{SubString{String}}:
  "Jane"
 
 julia> word("Jane saw a cat", 2)
-1-element Vector{String}:
+1-element Vector{SubString{String}}:
  "saw"
 
 julia> word("Jane saw a cat", -1)
-1-element Vector{String}:
+1-element Vector{SubString{String}}:
  "cat"
 
 julia> word("Jane saw a cat", 2, -1)
-3-element Vector{String}:
+3-element Vector{SubString{String}}:
  "saw"
  "a"
  "cat"
@@ -462,14 +462,13 @@ A vector of booleans indicating if the string starts with the pattern.
 
 Examples
 ```jldoctest
-julia> fruit = ["apple", "banana", "pear", "pineapple"]
-julia> str_starts(fruit, r"^p")  # [false, false, true, true]
+julia> str_starts(["apple", "banana", "pear", "pineapple"], r"^p")  # [false, false, true, true]
 4-element Vector{Bool}:
 false
 false
 true
 true
-julia> str_starts(fruit, r"^p", negate=true)  # [true, true, false, false]
+julia> str_starts(["apple", "banana", "pear", "pineapple"], r"^p", negate=true)  # [true, true, false, false]
 4-element Vector{Bool}:
 true
 true
@@ -494,14 +493,13 @@ A vector of booleans indicating if the string ends with the pattern.
 
 Examples
 ```jldoctest
-julia> fruit = ["apple", "banana", "pear", "pineapple"]
-julia> str_ends(fruit, r"e\$")  # [true, false, false, true]
+julia> str_ends(["apple", "banana", "pear", "pineapple"], r"e\$")  # [true, false, false, true]
 4-element Vector{Bool}:
 true
 false
 false
 true
-julia> str_ends(fruit, r"e\$", negate=true)  # [false, true, true, false]
+julia> str_ends(["apple", "banana", "pear", "pineapple"], r"e\$", negate=true)  # [false, true, true, false]
 4-element Vector{Bool}:
 false
 true
@@ -526,16 +524,15 @@ An integer vector containing indices of matching strings.
 
 # Examples
 ```jldoctest
-julia> fruit = ["apple", "banana", "pear", "pineapple"]
-julia> str_which(fruit, r"a")  # [1, 3]
+julia> str_which(["apple", "banana", "pear", "pineapple"], r"a")  # [1, 3]
 2-element Vector{Int64}:
  1
  3
-julia> str_which(fruit, r"a", negate=true)  # [2, 4]
+julia> str_which(["apple", "banana", "pear", "pineapple"], r"a", negate=true)  # [2, 4]
 2-element Vector{Int64}:
  2
  4
-julia> str_which(fruit, "a", negate=true)  # []
+julia> str_which(["apple", "banana", "pear", "pineapple"], "a", negate=true)  # []
 0-element Vector{Int64}:
 ```
 """
