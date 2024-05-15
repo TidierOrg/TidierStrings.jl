@@ -56,6 +56,7 @@ TidierStrings.jl currently supports:
 - `str_unique()`
 - `str_starts()`
 - `str_ends()`
+- `str_which()`
 - `word()`
 
 ## Examples

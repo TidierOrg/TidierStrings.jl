@@ -27,4 +27,5 @@ This package includes:
 - `str_unique()`
 - `str_starts()`
 - `str_ends()`
+- `str_which()`
 - `word()`

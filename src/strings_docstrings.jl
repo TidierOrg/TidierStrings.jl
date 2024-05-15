@@ -298,6 +298,7 @@ julia> str_to_sentence("hello world!")
 
 julia> str_to_sentence("a sentence mUst starT With A capital letter.")
 "A sentence must start With a capital letter."
+```
 """
 
 const docstring_str_dup = 
@@ -317,6 +318,7 @@ Examples
 ```jldoctest
 julia> str_dup("hello", 3)
 "hellohellohello"
+```
 """
 
 const docstring_str_length = 
@@ -360,6 +362,7 @@ julia> str_width("hello world! 😊")
 
 julia> str_width("😊")
 2
+```
 """
 
 const docstring_str_trim = 
@@ -379,6 +382,7 @@ Examples
 ```jldoctest
 julia> str_trim("  hello world! 😊  ")
 "hello world! 😊"
+```
 """
 
 const docstring_str_unique =
@@ -402,6 +406,7 @@ julia> str_unique(["apple", "banana", "pear", "banana", "Apple"])
  "banana"
  "pear"
  "Apple"
+```
 """
 
 const docstring_word = 
@@ -438,6 +443,7 @@ julia> word("Jane saw a cat", 2, -1)
  "saw"
  "a"
  "cat"
+```
 """
 
 const docstring_str_starts =
@@ -469,6 +475,7 @@ true
 true
 false
 false
+```
 """
 
 const docstring_str_ends =
@@ -500,4 +507,35 @@ false
 true
 true
 false
+```
+"""
+
+const docstring_str_which =
+"""
+    str_which(string::Vector{T}, pattern::Union{AbstractString, Regex}; negate::Bool=false)
+
+Returns the indices of strings where there's at least one match to the pattern.
+
+# Arguments
+- `string`: Input string.
+- `pattern`: The pattern to check for. Can be a string or a regular expression.
+- `negate`: Whether to negate the result. Default is `false`.
+
+# Returns
+An integer vector containing indices of matching strings.
+
+# Examples
+```jldoctest
+julia> fruit = ["apple", "banana", "pear", "pineapple"]
+julia> str_which(fruit, r"a")  # [1, 3]
+2-element Vector{Int64}:
+ 1
+ 3
+julia> str_which(fruit, r"a", negate=true)  # [2, 4]
+2-element Vector{Int64}:
+ 2
+ 4
+julia> str_which(fruit, "a", negate=true)  # []
+0-element Vector{Int64}:
+```
 """
