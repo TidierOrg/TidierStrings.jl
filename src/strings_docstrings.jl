@@ -439,3 +439,65 @@ julia> word("Jane saw a cat", 2, -1)
  "a"
  "cat"
 """
+
+const docstring_str_starts =
+"""
+    str_starts(string::Vector{T}, pattern::Union{AbstractString, Regex}; negate::Bool=false)
+
+Check if a string starts with a certain pattern.
+
+Arguments
+- `string`: Input string.
+- `pattern`: The pattern to check for. Can be a string or a regular expression.
+- `negate`: Whether to negate the result. Default is `false`.
+
+Returns
+A vector of booleans indicating if the string starts with the pattern.
+
+Examples
+```jldoctest
+julia> fruit = ["apple", "banana", "pear", "pineapple"]
+julia> str_starts(fruit, r"^p")  # [false, false, true, true]
+4-element Vector{Bool}:
+false
+false
+true
+true
+julia> str_starts(fruit, r"^p", negate=true)  # [true, true, false, false]
+4-element Vector{Bool}:
+true
+true
+false
+false
+"""
+
+const docstring_str_ends =
+"""
+    str_ends(string::Vector{T}, pattern::Union{AbstractString, Regex}; negate::Bool=false)
+
+Check if a string ends with a certain pattern.
+
+Arguments
+- `string`: Input string.
+- `pattern`: The pattern to check for. Can be a string or a regular expression.
+- `negate`: Whether to negate the result. Default is `false`.
+
+Returns
+A vector of booleans indicating if the string ends with the pattern.
+
+Examples
+```jldoctest
+julia> fruit = ["apple", "banana", "pear", "pineapple"]
+julia> str_ends(fruit, r"e\$")  # [true, false, false, true]
+4-element Vector{Bool}:
+true
+false
+false
+true
+julia> str_ends(fruit, r"e\$", negate=true)  # [false, true, true, false]
+4-element Vector{Bool}:
+false
+true
+true
+false
+"""
