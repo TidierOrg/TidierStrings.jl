@@ -524,10 +524,12 @@ An integer vector containing indices of matching strings.
 
 # Examples
 ```jldoctest
-julia> str_which(["apple", "banana", "pear", "pineapple"], r"a")  # [1, 3]
-2-element Vector{Int64}:
+julia> str_which(["apple", "banana", "pear", "pineapple"], r"a")  # [1, 2, 3, 4]
+4-element Vector{Int64}:
 1
+2
 3
+4
 julia> str_which(["apple", "banana", "pear", "pineapple"], r"a", negate=true)  # []
 Int64[]
 julia> str_which(["apple", "banana", "pear", "pineapple"], "a", negate=true)  # []
