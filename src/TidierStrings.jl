@@ -1,7 +1,7 @@
 module TidierStrings
 
 export str_detect, str_replace, str_replace_all, str_remove_all, str_remove, str_count, str_squish, str_equal, str_to_upper, str_to_lower, str_split, str_subset, 
-       str_to_title, str_to_sentence, str_dup, str_length, str_width, str_trim, str_unique, word, str_starts, str_ends, str_which
+       str_to_title, str_to_sentence, str_dup, str_length, str_width, str_trim, str_unique, word, str_starts, str_ends, str_which, str_flatten, str_flatten_comma
 
 include("strings_docstrings.jl")
 
@@ -33,6 +33,38 @@ function str_detect(column, pattern::Union{String, Regex})
         # For regular expressions, directly use occursin
         return occursin(pattern, column)
     end
+end
+
+"""
+$docstring_str_flatten
+"""
+function str_flatten(string::AbstractVector, collapse::AbstractString="", last::Union{Nothing,AbstractString}=nothing; na_rm::Bool=false)
+    if na_rm
+        string = filter(!ismissing, string)
+    end
+
+    if isempty(string)
+        return ""
+    elseif length(string) == 1
+        return string[1]
+    else
+        if isnothing(last)
+            return join(string, collapse)
+        else
+            if length(string) == 2
+                return join(string, last)
+            else
+                return join(string[1:end-1], collapse) * last * string[end]
+            end
+        end
+    end
+end
+
+"""
+$docstring_str_flatten_comma
+"""
+function str_flatten_comma(string::AbstractVector, last::Union{Nothing,AbstractString}=nothing; na_rm::Bool=false)
+    return str_flatten(string, ", ", last, na_rm=na_rm)
 end
 
 """

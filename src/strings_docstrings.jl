@@ -32,6 +32,14 @@ true
 ```
 """
 
+const docstring_str_flatten  =
+"""
+"""
+
+const docstring_str_flatten_comma  =
+"""
+"""
+
 const docstring_str_replace  =
 """
     str_replace(column::String, pattern::Union{String, Regex}, replacement::String)

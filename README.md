@@ -57,6 +57,8 @@ TidierStrings.jl currently supports:
 - `str_starts()`
 - `str_ends()`
 - `str_which()`
+- `str_flatten()`
+- `str_flatten_comma()`
 - `word()`
 
 ## Examples
