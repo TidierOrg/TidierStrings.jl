@@ -25,4 +25,7 @@ This package includes:
 - `str_trim()`
 - `str_subset()`
 - `str_unique()`
+- `str_starts()`
+- `str_ends()`
+- `str_which()`
 - `word()`

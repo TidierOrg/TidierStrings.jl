@@ -1,7 +1,7 @@
 module TidierStrings
 
 export str_detect, str_replace, str_replace_all, str_remove_all, str_remove, str_count, str_squish, str_equal, str_to_upper, str_to_lower, str_split, str_subset, 
-       str_to_title, str_to_sentence, str_dup, str_length, str_width, str_trim, str_unique, word
+       str_to_title, str_to_sentence, str_dup, str_length, str_width, str_trim, str_unique, word, str_starts, str_ends, str_which
 
 include("strings_docstrings.jl")
 
@@ -35,6 +35,55 @@ function str_detect(column, pattern::Union{String, Regex})
     end
 end
 
+"""
+$docstring_str_starts
+"""
+function str_starts(string::Vector{T}, pattern::Union{AbstractString,Regex}; negate::Bool=false)::Vector{Bool} where {T}
+    if pattern isa Regex
+        matches = [match(pattern, s) !== nothing for s in string]
+        return negate ? .!matches : matches
+    elseif pattern isa AbstractString
+        matches = [startswith(s, pattern) for s in string]
+        return negate ? .!matches : matches
+    else
+        error("Pattern must be either a Regex or an AbstractString.")
+    end
+end
+
+"""
+$docstring_str_ends
+"""
+function str_ends(string::Vector{T}, pattern::Union{AbstractString,Regex}; negate::Bool=false)::Vector{Bool} where {T}
+    if pattern isa Regex
+        matches = [match(pattern, s) !== nothing for s in string]
+        return negate ? .!matches : matches
+    elseif pattern isa AbstractString
+        matches = [endswith(s, pattern) for s in string]
+        return negate ? .!matches : matches
+    else
+        error("Pattern must be either a Regex or an AbstractString.")
+    end
+end
+
+"""
+$docstring_str_which
+"""
+function str_which(strings::Vector{T}, pattern::Union{AbstractString, Regex}; negate::Bool=false)::Vector{Int} where {T}
+    indices = Int[]
+    for (i, s) in enumerate(strings)
+        if pattern isa Regex && occursin(pattern, s)
+            push!(indices, i)
+        elseif pattern isa AbstractString && !ismissing(s) && occursin(pattern, s)
+            push!(indices, i)
+        end
+    end
+
+    if negate
+        return setdiff(1:length(strings), indices)
+    else
+        return indices
+    end
+end
 
 """
 $docstring_str_replace
