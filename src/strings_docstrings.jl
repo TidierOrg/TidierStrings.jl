@@ -544,3 +544,10 @@ julia> str_which(["apple", "banana", "pear", "pineapple"], "a", negate=true)  # 
 Int64[]
 ```
 """
+
+const docstring_str_locate = 
+"""
+"""
+const docstring_str_locate_all = 
+"""
+"""

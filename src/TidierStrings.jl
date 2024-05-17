@@ -36,6 +36,20 @@ function str_detect(column, pattern::Union{String, Regex})
 end
 
 """
+$docstring_str_locate
+"""
+function str_locate(string::AbstractVector, pattern::Union{String,Regex})
+
+end
+
+"""
+$docstring_str_locate_all
+"""
+function str_locate_all(string::AbstractVector, pattern::Union{String,Regex})
+
+end
+
+"""
 $docstring_str_flatten
 """
 function str_flatten(string::AbstractVector, collapse::AbstractString="", last::Union{Nothing,AbstractString}=nothing; na_rm::Bool=false)
