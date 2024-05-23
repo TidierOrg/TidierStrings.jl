@@ -30,4 +30,6 @@ This package includes:
 - `str_which()`
 - `str_flatten()`
 - `str_flatten_comma()`
+- `str_conv`
+- `str_like`
 - `word()`

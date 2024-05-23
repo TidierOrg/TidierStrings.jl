@@ -551,3 +551,19 @@ const docstring_str_locate =
 const docstring_str_locate_all = 
 """
 """
+
+const docstring_str_c = 
+"""
+"""
+
+const docstring_str_replace_missing = 
+"""
+"""
+
+const docstring_str_conv = 
+"""
+"""
+
+const docstring_str_like = 
+"""
+"""
