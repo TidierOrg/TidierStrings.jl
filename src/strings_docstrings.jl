@@ -552,10 +552,6 @@ const docstring_str_locate_all =
 """
 """
 
-const docstring_str_c = 
-"""
-"""
-
 const docstring_str_replace_missing = 
 """
 """
