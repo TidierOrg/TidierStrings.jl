@@ -10,6 +10,7 @@ This package includes:
 - `str_detect()`
 - `str_replace()`
 - `str_replace_all()`
+- `str_replace_missing`
 - `str_removal_all()`
 - `str_remove()`
 - `str_count()`
