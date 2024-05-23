@@ -10,7 +10,7 @@ This package includes:
 - `str_detect()`
 - `str_replace()`
 - `str_replace_all()`
-- `str_replace_missing`
+- `str_replace_missing()`
 - `str_removal_all()`
 - `str_remove()`
 - `str_count()`
@@ -31,6 +31,8 @@ This package includes:
 - `str_which()`
 - `str_flatten()`
 - `str_flatten_comma()`
+- `str_locate()`
+- `str_locate_all()`
 - `str_conv`
 - `str_like`
 - `word()`

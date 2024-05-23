@@ -47,7 +47,14 @@ function str_locate(string::AbstractString, pattern::Union{AbstractString,Regex}
     else
         regex_pattern = Regex(pattern)
     end
-    # todo
+
+    match = Base.match(regex_pattern, string)
+
+    if match === nothing
+        return (NaN, NaN)
+    else
+        return (first(match.offset), last(match.offset))
+    end
 end
 
 """
@@ -59,7 +66,10 @@ function str_locate_all(string::AbstractString, pattern::Union{AbstractString,Re
     else
         regex_pattern = Regex(pattern)
     end
-    # todo
+
+    matches = collect(eachmatch(regex_pattern, string))
+
+    return [(first(m.offset), last(m.offset)) for m in matches]
 end
 
 """
