@@ -622,9 +622,9 @@ A vector of booleans indicating if the string matches the pattern.
 ```jldoctest
 julia> str_like(["Hello", "world", "HELLO", "WORLD"], "H_llo")
 4-element Vector{Bool}:
- true
- false
- true
- false
+ 1
+ 0
+ 1
+ 0
 ```
 """
