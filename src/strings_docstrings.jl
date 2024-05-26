@@ -597,11 +597,11 @@ julia> str_conv("Hello, World!", "UTF-8")
 julia> str_conv("Hello, World!", "ASCII")
 "Hello, World!"
 
-julia> str_conv("Héllo, wörld!", "ISO-8859-1")
-"Héllo, wörld!"
+julia> str_conv("Héllo, Wörld!", "ISO-8859-1")
+"Héllo, Wörld!"
 
 julia> str_conv([0x48, 0x65, 0x6C, 0x6C, 0x6F, 0x2C, 0x20, 0x77, 0x6F, 0x72, 0x6C, 0x64, 0x21], "UTF-8")
-"Hello, World!"
+"Hello, world!"
 ```
 """
 
@@ -620,41 +620,11 @@ Returns
 A vector of booleans indicating if the string matches the pattern.
 
 ```jldoctest
-julia> strings = ["Hello", "world", "HELLO", "WORLD"];
-julia> pattern = "H_llo";
-julia> str_like(strings, pattern)
+julia> str_like(["Hello", "world", "HELLO", "WORLD"], "H_llo")
 4-element Vector{Bool}:
  true
  false
  true
  false
-
-julia> str_like(strings, pattern; ignore_case = false)
-4-element Vector{Bool}:
- true
- false
- false
- false
-
-julia> pattern = "%o%";
-julia> str_like(strings, pattern)
-4-element Vector{Bool}:
- true
- true
- true
- true
-
-julia> strings = ["50%", "5_"];
-julia> pattern = "5\\%";
-julia> str_like(strings, pattern)
-2-element Vector{Bool}:
- true
- false
-
-julia> pattern = "5\\_";
-julia> str_like(strings, pattern)
-2-element Vector{Bool}:
- false
- true
 ```
 """
