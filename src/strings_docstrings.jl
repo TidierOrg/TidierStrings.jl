@@ -554,12 +554,107 @@ const docstring_str_locate_all =
 
 const docstring_str_replace_missing = 
 """
+    str_replace_missing(string::AbstractVector{Union{Missing,String}}, replacement::String="missing")
+
+Replaces missing values in a vector with a specified string.
+
+Arguments
+- `string`: Input vector of strings.
+- `replacement`: The string to replace missing values with. Default is "missing".
+
+Returns
+The vector of strings with missing values replaced.
+
+Examples
+```jldoctest
+julia> str_replace_missing(["apple", missing, "pear", "pineapple"])
+4-element Vector{String}:
+ "apple"
+ "missing"
+ "pear"
+ "pineapple"
+```
 """
 
 const docstring_str_conv = 
 """
+    str_conv(string::Union{String,Vector{UInt8}}, encoding::String)
+
+Converts a string to a different encoding.
+
+Arguments
+- `string`: Input string.
+- `encoding`: A String that specifies the encoding to use.
+
+Returns
+The converted string.
+
+Examples
+```jldoctest
+julia> str_conv("Hello, World!", "UTF-8")
+"Hello, World!"
+
+julia> str_conv("Hello, World!", "ASCII")
+"Hello, World!"
+
+julia> str_conv("Héllo, wörld!", "ISO-8859-1")
+"Héllo, wörld!"
+
+julia> str_conv([0x48, 0x65, 0x6C, 0x6C, 0x6F, 0x2C, 0x20, 0x77, 0x6F, 0x72, 0x6C, 0x64, 0x21], "UTF-8")
+"Hello, World!"
+```
 """
 
 const docstring_str_like = 
 """
+    str_like(string::AbstractVector{String}, pattern::String; ignore_case::Bool = true)
+
+Detect a pattern in each string of the input vector using SQL-like pattern matching.
+
+Arguments
+- `string`: Input string.
+- `pattern`: The pattern to check for. Can be a string or a regular expression.
+- `ignore_case`: Whether to ignore case when matching. Default is `true`.
+
+Returns
+A vector of booleans indicating if the string matches the pattern.
+
+```jldoctest
+julia> strings = ["Hello", "world", "HELLO", "WORLD"];
+julia> pattern = "H_llo";
+julia> str_like(strings, pattern)
+4-element Vector{Bool}:
+ true
+ false
+ true
+ false
+
+julia> str_like(strings, pattern; ignore_case = false)
+4-element Vector{Bool}:
+ true
+ false
+ false
+ false
+
+julia> pattern = "%o%";
+julia> str_like(strings, pattern)
+4-element Vector{Bool}:
+ true
+ true
+ true
+ true
+
+julia> strings = ["50%", "5_"];
+julia> pattern = "5\\%";
+julia> str_like(strings, pattern)
+2-element Vector{Bool}:
+ true
+ false
+
+julia> pattern = "5\\_";
+julia> str_like(strings, pattern)
+2-element Vector{Bool}:
+ false
+ true
+```
 """
