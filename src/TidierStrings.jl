@@ -75,8 +75,8 @@ end
 """
 $docstring_str_flatten
 """
-function str_flatten(string::AbstractVector, collapse::AbstractString="", last::Union{Nothing,AbstractString}=nothing; na_rm::Bool=false)
-    if na_rm
+function str_flatten(string::AbstractVector, collapse::AbstractString="", last::Union{Nothing,AbstractString}=nothing; missing_rm::Bool=false)
+    if missing_rm
         string = filter(!ismissing, string)
     end
 
@@ -100,8 +100,8 @@ end
 """
 $docstring_str_flatten_comma
 """
-function str_flatten_comma(string::AbstractVector, last::Union{Nothing,AbstractString}=nothing; na_rm::Bool=false)
-    return str_flatten(string, ", ", last, na_rm=na_rm)
+function str_flatten_comma(string::AbstractVector, last::Union{Nothing,AbstractString}=nothing; missing_rm::Bool=false)
+    return str_flatten(string, ", ", last, missing_rm=missing_rm)
 end
 
 """
