@@ -63,12 +63,6 @@ julia> str_flatten(['a', 'b', 'c'], ", ")
 
 julia> str_flatten(['a', 'b', 'c'], ", ", " and ")
 "a, b and c"
-
-julia> str_flatten(['a', 'b', 'c'], ", ", ", and ")
-"a, b, and c"
-
-julia> str_flatten(['a', 'b'], ", ", ", and ")
-"a and b"
 ```
 """
 
@@ -96,9 +90,6 @@ julia> str_flatten_comma(['a', 'b'])
 
 julia> str_flatten_comma(['a', 'b'], " and ")
 "a and b"
-
-julia> str_flatten_comma(['a', 'b'], ", and ")
-"a, and b"
 ```
 """
 
