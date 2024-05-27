@@ -616,7 +616,7 @@ julia> fruit = ["apple", "banana", "pear", "pineapple"]; str_locate(fruit[1], "e
 (5, 5)
 
 julia> fruit = ["apple", "banana", "pear", "pineapple"]; str_locate(fruit[2], "a")
-(1, 1)
+(2, 2)
 ```
 """
 const docstring_str_locate_all = 
@@ -638,9 +638,10 @@ julia> fruit = ["apple", "banana", "pear", "pineapple"]; str_locate_all(fruit[1]
  (5, 5)
 
 julia> fruit = ["apple", "banana", "pear", "pineapple"]; str_locate_all(fruit[2], "a")
-2-element Vector{Tuple{Int64, Int64}}:
- (1, 1)
- (5, 5)
+3-element Vector{Tuple{Int64, Int64}}:
+ (2, 2)
+ (4, 4)
+ (6, 6)
 ```
 """
 
