@@ -86,7 +86,7 @@ julia> str_flatten_comma(['a', 'b', 'c'])
 "a, b, c"
 
 julia> str_flatten_comma(['a', 'b'])
-"a and b"
+"a, b"
 
 julia> str_flatten_comma(['a', 'b'], " and ")
 "a and b"
