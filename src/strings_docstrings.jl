@@ -32,6 +32,67 @@ true
 ```
 """
 
+const docstring_str_flatten  =
+"""
+    str_flatten(string::AbstractVector, collapse::AbstractString="", last::Union{Nothing,AbstractString}=nothing; missing_rm::Bool=false)
+
+Flatten a string vector into a single string.
+
+Arguments
+- `string`: Input string.
+- `collapse`: The string to insert between each string in the input vector. Default is `""`.
+- `last`: The string to insert at the end of the flattened string. Default is `nothing`.
+- `missing_rm`: Remove `Missing` values from the input vector. Default is `false`.
+
+Returns
+A flattened string.
+
+Examples
+```jldoctest
+julia> str_flatten(["a", "b", "c"])
+"abc"
+
+julia> str_flatten(["a", "b", "c", "d"])
+"abcd"
+
+julia> str_flatten(['a', 'b', 'c'], "-")
+"a-b-c"
+
+julia> str_flatten(['a', 'b', 'c'], ", ")
+"a, b, c"
+
+julia> str_flatten(['a', 'b', 'c'], ", ", " and ")
+"a, b and c"
+```
+"""
+
+const docstring_str_flatten_comma  =
+"""
+    str_flatten_comma(string::AbstractVector, last::Union{Nothing,AbstractString}=nothing; missing_rm::Bool=false)
+
+Flatten a string vector into a single string, separated by commas.
+
+Arguments
+- `string`: Input string.
+- `last`: The string to insert at the end of the flattened string. Default is `nothing`.
+- `missing_rm`: Remove `Missing` values from the input vector. Default is `false`.
+
+Returns
+A flattened string.
+
+Examples
+```jldoctest
+julia> str_flatten_comma(['a', 'b', 'c'])
+"a, b, c"
+
+julia> str_flatten_comma(['a', 'b'])
+"a, b"
+
+julia> str_flatten_comma(['a', 'b'], " and ")
+"a and b"
+```
+"""
+
 const docstring_str_replace  =
 """
     str_replace(column::String, pattern::Union{String, Regex}, replacement::String)
@@ -534,5 +595,129 @@ julia> str_which(["apple", "banana", "pear", "pineapple"], r"a", negate=true)  #
 Int64[]
 julia> str_which(["apple", "banana", "pear", "pineapple"], "a", negate=true)  # []
 Int64[]
+```
+"""
+
+const docstring_str_locate = 
+"""
+    str_locate(string::AbstractString, pattern::Union{AbstractString, Regex})
+
+Returns the index of the first occurrence of a pattern in a string.
+
+Arguments
+- `string`: Input string.
+- `pattern`: The pattern to search for. Can be a string or a regular expression.
+
+A tuple `(start, end)` where `start` is the position at the start of the match and `end` is the position of the end.
+
+Examples
+```jldoctest
+julia> fruit = ["apple", "banana", "pear", "pineapple"]; str_locate(fruit[1], "e")
+(5, 5)
+
+julia> fruit = ["apple", "banana", "pear", "pineapple"]; str_locate(fruit[2], "a")
+(2, 2)
+```
+"""
+const docstring_str_locate_all = 
+"""
+    str_locate_all(string::AbstractString, pattern::Union{AbstractString, Regex})
+
+Returns the indices of all occurrences of a pattern in a string.
+
+Arguments
+- `string`: Input string.
+- `pattern`: The pattern to search for. Can be a string or a regular expression.
+
+A vector of tuples `(start, end)` where `start` is the position at the start of the match and `end` is the position of the end.
+
+Examples
+```jldoctest
+julia> fruit = ["apple", "banana", "pear", "pineapple"]; str_locate_all(fruit[1], "e")
+1-element Vector{Tuple{Int64, Int64}}:
+ (5, 5)
+
+julia> fruit = ["apple", "banana", "pear", "pineapple"]; str_locate_all(fruit[2], "a")
+3-element Vector{Tuple{Int64, Int64}}:
+ (2, 2)
+ (4, 4)
+ (6, 6)
+```
+"""
+
+const docstring_str_replace_missing = 
+"""
+    str_replace_missing(string::AbstractVector{Union{Missing,String}}, replacement::String="missing")
+
+Replaces missing values in a vector with a specified string.
+
+Arguments
+- `string`: Input vector of strings.
+- `replacement`: The string to replace missing values with. Default is "missing".
+
+Returns
+The vector of strings with missing values replaced.
+
+Examples
+```jldoctest
+julia> str_replace_missing(["apple", missing, "pear", "pineapple"])
+4-element Vector{String}:
+ "apple"
+ "missing"
+ "pear"
+ "pineapple"
+```
+"""
+
+const docstring_str_conv = 
+"""
+    str_conv(string::Union{String,Vector{UInt8}}, encoding::String)
+
+Converts a string to a different encoding.
+
+Arguments
+- `string`: Input string.
+- `encoding`: A String that specifies the encoding to use.
+
+Returns
+The converted string.
+
+Examples
+```jldoctest
+julia> str_conv("Hello, World!", "UTF-8")
+"Hello, World!"
+
+julia> str_conv("Hello, World!", "ASCII")
+"Hello, World!"
+
+julia> str_conv("Héllo, Wörld!", "ISO-8859-1")
+"Héllo, Wörld!"
+
+julia> str_conv([0x48, 0x65, 0x6C, 0x6C, 0x6F, 0x2C, 0x20, 0x77, 0x6F, 0x72, 0x6C, 0x64, 0x21], "UTF-8")
+"Hello, world!"
+```
+"""
+
+const docstring_str_like = 
+"""
+    str_like(string::AbstractVector{String}, pattern::String; ignore_case::Bool = true)
+
+Detect a pattern in each string of the input vector using SQL-like pattern matching.
+
+Arguments
+- `string`: Input string.
+- `pattern`: The pattern to check for. Can be a string or a regular expression.
+- `ignore_case`: Whether to ignore case when matching. Default is `true`.
+
+Returns
+A vector of booleans indicating if the string matches the pattern.
+
+```jldoctest
+julia> str_like(["Hello", "world", "HELLO", "WORLD"], "H_llo")
+4-element Vector{Bool}:
+ 1
+ 0
+ 1
+ 0
 ```
 """

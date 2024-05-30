@@ -39,6 +39,7 @@ TidierStrings.jl currently supports:
 - `str_detect()`
 - `str_replace()`
 - `str_replace_all()`
+- `str_replace_missing()`
 - `str_removal_all()`
 - `str_remove()`
 - `str_count()`
@@ -57,6 +58,12 @@ TidierStrings.jl currently supports:
 - `str_starts()`
 - `str_ends()`
 - `str_which()`
+- `str_flatten()`
+- `str_flatten_comma()`
+- `str_locate()`
+- `str_locate_all()`
+- `str_conv`
+- `str_like`
 - `word()`
 
 ## Examples

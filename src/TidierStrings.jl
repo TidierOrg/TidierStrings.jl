@@ -1,7 +1,10 @@
 module TidierStrings
 
+using StringEncodings
+
 export str_detect, str_replace, str_replace_all, str_remove_all, str_remove, str_count, str_squish, str_equal, str_to_upper, str_to_lower, str_split, str_subset, 
-       str_to_title, str_to_sentence, str_dup, str_length, str_width, str_trim, str_unique, word, str_starts, str_ends, str_which
+       str_to_title, str_to_sentence, str_dup, str_length, str_width, str_trim, str_unique, word, str_starts, str_ends, str_which, str_flatten, str_flatten_comma,
+       str_locate, str_locate_all, str_conv, str_replace_missing, str_like
 
 include("strings_docstrings.jl")
 
@@ -33,6 +36,109 @@ function str_detect(column, pattern::Union{String, Regex})
         # For regular expressions, directly use occursin
         return occursin(pattern, column)
     end
+end
+
+"""
+$docstring_str_locate
+"""
+function str_locate(string::AbstractString, pattern::Union{AbstractString,Regex})
+    if isa(pattern, Regex)
+        regex_pattern = pattern
+    else
+        regex_pattern = Regex(pattern)
+    end
+
+    match = Base.match(regex_pattern, string)
+
+    if match === nothing
+        return (NaN, NaN)
+    else
+        return (first(match.offset), last(match.offset))
+    end
+end
+
+"""
+$docstring_str_locate_all
+"""
+function str_locate_all(string::AbstractString, pattern::Union{AbstractString,Regex})
+    if isa(pattern, Regex)
+        regex_pattern = pattern
+    else
+        regex_pattern = Regex(pattern)
+    end
+
+    matches = collect(eachmatch(regex_pattern, string))
+
+    return [(first(m.offset), last(m.offset)) for m in matches]
+end
+
+"""
+$docstring_str_flatten
+"""
+function str_flatten(string::AbstractVector, collapse::AbstractString="", last::Union{Nothing,AbstractString}=nothing; missing_rm::Bool=false)
+    if missing_rm
+        string = filter(!ismissing, string)
+    end
+
+    if isempty(string)
+        return ""
+    elseif length(string) == 1
+        return string[1]
+    else
+        if isnothing(last)
+            return join(string, collapse)
+        else
+            if length(string) == 2
+                return join(string, last)
+            else
+                return join(string[1:end-1], collapse) * last * string[end]
+            end
+        end
+    end
+end
+
+"""
+$docstring_str_flatten_comma
+"""
+function str_flatten_comma(string::AbstractVector, last::Union{Nothing,AbstractString}=nothing; missing_rm::Bool=false)
+    return str_flatten(string, ", ", last, missing_rm=missing_rm)
+end
+
+"""
+$docstring_str_conv
+"""
+function str_conv(string::Union{String,Vector{UInt8}}, encoding::String)
+    encoder = StringEncodings.Encoding(encoding)
+    if isa(string, Vector{UInt8})
+        return StringEncodings.decode(string, encoder)
+    else
+        byte_array = StringEncodings.encode(string, encoder)
+        return StringEncodings.decode(byte_array, encoder)
+    end
+end
+
+"""
+$docstring_str_replace_missing
+"""
+function str_replace_missing(string::AbstractVector{Union{Missing,String}}, replacement::String="missing")
+    return [ismissing(s) ? replacement : s for s in string]
+end
+
+"""
+$docstring_str_like
+"""
+function str_like(string::AbstractVector{String}, pattern::String; ignore_case::Bool = true)
+    # Convert SQL LIKE pattern to Julia regex pattern
+    julia_pattern = replace(pattern, r"[%_]" => s -> s == "%" ? ".*" : ".")
+    julia_pattern = replace(julia_pattern, r"(\\%)" => "%")
+    julia_pattern = replace(julia_pattern, r"(\\_)" => "_")
+
+    # Create a regular expression object
+    regex_flags = ignore_case ? "i" : ""
+    regex_pattern = Regex("^" * julia_pattern * "\$", regex_flags)
+
+    # Apply the pattern to each string in the input vector
+    return [occursin(regex_pattern, str) for str in string]
 end
 
 """
