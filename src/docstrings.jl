@@ -721,3 +721,23 @@ julia> str_like(["Hello", "world", "HELLO", "WORLD"], "H_llo")
  0
 ```
 """
+
+const docstring_str_c =
+"""
+    str_c(strings::AbstractVector; sep::AbstractString="")
+
+Joins a vector of strings into a single string.
+
+Arguments
+- `strings`: Input strings.
+- `sep`: The separator between the strings. Default is an empty string.
+
+Returns
+The joined string.
+
+Examples
+```jldoctest
+julia> str_c(["apple", "banana", "pear", "pineapple"])
+"applebananapearpineapple"
+```
+"""
