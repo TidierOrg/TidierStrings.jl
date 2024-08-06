@@ -760,8 +760,11 @@ The wrapped string.
 
 Examples
 ```jldoctest
-julia> str_wrap("This is an example text that should be wrapped based on the given width and breaking rules.", width=20, whitespace_only=true)
-"This is an example\ntext that should be\nwrapped based on the\ngiven width and\nbreaking rules."
-
+julia> println(str_wrap("This is an example text that should be wrapped based on the given width and breaking rules.", width=20))
+This is an example
+text that should be
+wrapped based on the
+given width and
+breaking rules.
 ```
 """
