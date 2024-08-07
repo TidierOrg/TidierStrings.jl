@@ -49,6 +49,7 @@ TidierStrings.jl currently supports:
 - `str_to_lower()`
 - `str_to_title()`
 - `str_to_sentence()`
+- `str_c`
 - `str_dup()`
 - `str_length()`
 - `str_width()`
@@ -64,6 +65,7 @@ TidierStrings.jl currently supports:
 - `str_locate_all()`
 - `str_conv`
 - `str_like`
+- `str_wrap`
 - `word()`
 
 ## Examples

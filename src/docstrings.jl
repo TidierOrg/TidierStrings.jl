@@ -721,3 +721,50 @@ julia> str_like(["Hello", "world", "HELLO", "WORLD"], "H_llo")
  0
 ```
 """
+
+const docstring_str_c =
+"""
+    str_c(strings::AbstractVector; sep::AbstractString="")
+
+Joins a vector of strings into a single string.
+
+Arguments
+- `strings`: Input strings.
+- `sep`: The separator between the strings. Default is an empty string.
+
+Returns
+The joined string.
+
+Examples
+```jldoctest
+julia> str_c(["apple", "banana", "pear", "pineapple"])
+"applebananapearpineapple"
+```
+"""
+
+const docstring_str_wrap =
+"""
+    str_wrap(string::AbstractString; width::Integer=80, indent::Integer=0, exdent::Integer=0, whitespace_only::Bool=true)::String
+
+Wraps a string into multiple lines.
+
+Arguments
+- `string`: Input string.
+- `width`: The maximum width of each line. Default is 80.
+- `indent`: The number of spaces to indent each line. Default is 0.
+- `exdent`: The number of spaces to exdent each line. Default is 0.
+- `whitespace_only`: Whether to only wrap on whitespace. Default is true.
+
+Returns
+The wrapped string.
+
+Examples
+```jldoctest
+julia> println(str_wrap("This is an example text that should be wrapped based on the given width and breaking rules.", width=20))
+This is an example
+text that should be
+wrapped based on the
+given width and
+breaking rules.
+```
+"""
