@@ -87,3 +87,34 @@ function str_wrap(
 
     return Base.join(lines, "\n")
 end
+
+"""
+$docstring_str_pad
+"""
+function str_pad(string::AbstractString, width::Integer;
+                 side::String = "right", pad::AbstractString = " ", use_width::Bool = true)
+    if use_width
+        len = length(string)
+    else
+        len = ncodeunits(string)
+    end
+    
+    if width <= len
+        return string
+    end
+    
+    padding_length = width - len
+    padding = repeat(pad, cld(padding_length, length(pad)))
+
+    if side == "right"
+        return string * first(padding, padding_length)
+    elseif side == "left"
+        return first(padding, padding_length) * string
+    elseif side == "both"
+        left_pad = div(padding_length, 2)
+        right_pad = padding_length - left_pad
+        return first(padding, left_pad) * string * first(padding, right_pad)
+    else
+        throw(ArgumentError("side must be one of 'left', 'right', or 'both'"))
+    end
+end

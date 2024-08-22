@@ -111,27 +111,19 @@ end
 """
 $docstring_str_replace_all
 """
-function str_replace_all(column, pattern::Union{String,Regex}, replacement::String)
+function str_replace_all(column, pattern::Union{String, Regex}, replacement::String)
     if ismissing(column)
-        return (column)
+        return column
     end
 
-    if pattern isa String
-        patterns = split(pattern, '|')
-        for p in patterns
-            # Convert the pattern to a Regex object
-            regex = Regex(strip(p))
-            column = replace(column, regex => replacement)
-        end
-    else
-        # For regular expressions, directly use replace
-        regex = Regex(pattern.pattern)
-        column = replace(column, regex => replacement)
-    end
-    # Replace multiple consecutive spaces with a single space
-    column = replace(column, r"\s+" => " ")
-    return column
+    regex_pattern = isa(pattern, String) ? Regex(pattern) : pattern
+
+    column = replace(column, regex_pattern => replacement)
+    
+    return replace(column, r"\s+" => " ")
 end
+
+
 
 """
 $docstring_str_remove
@@ -199,32 +191,38 @@ end
 """
 $docstring_str_starts
 """
-function str_starts(string::Vector{T}, pattern::Union{AbstractString,Regex}; negate::Bool=false)::Vector{Bool} where {T}
+function str_starts(string::AbstractString, pattern::Union{AbstractString, Regex}; negate::Bool=false)::Bool
+    if ismissing(string)
+        return (string)
+    end
     if pattern isa Regex
-        matches = [match(pattern, s) !== nothing for s in string]
-        return negate ? .!matches : matches
+        match_result = match(pattern, string) !== nothing
     elseif pattern isa AbstractString
-        matches = [startswith(s, pattern) for s in string]
-        return negate ? .!matches : matches
+        match_result = startswith(string, pattern)
     else
         error("Pattern must be either a Regex or an AbstractString.")
     end
+    
+    return negate ? !match_result : match_result
 end
-
 """
 $docstring_str_ends
 """
-function str_ends(string::Vector{T}, pattern::Union{AbstractString,Regex}; negate::Bool=false)::Vector{Bool} where {T}
+function str_ends(string::AbstractString, pattern::Union{AbstractString, Regex}; negate::Bool=false)::Bool
+    if ismissing(string)
+        return (string)
+    end
     if pattern isa Regex
-        matches = [match(pattern, s) !== nothing for s in string]
-        return negate ? .!matches : matches
+        match_result = match(pattern, string) !== nothing
     elseif pattern isa AbstractString
-        matches = [endswith(s, pattern) for s in string]
-        return negate ? .!matches : matches
+        match_result = endswith(string, pattern)
     else
         error("Pattern must be either a Regex or an AbstractString.")
     end
+    
+    return negate ? !match_result : match_result
 end
+
 
 """
 $docstring_str_subset
@@ -275,3 +273,31 @@ function str_which(strings::Vector{T}, pattern::Union{AbstractString,Regex}; neg
         return indices
     end
 end
+
+
+"""
+$docstring_str_extract
+"""
+function str_extract(input::AbstractString, pattern::Union{String, Regex})
+    # Convert pattern to Regex if it's a string
+    regex_pattern = isa(pattern, String) ? Regex(pattern) : pattern
+    
+    # Find the first match, return missing if none found
+    m = match(regex_pattern, input)
+    return m === nothing ? missing : m.match
+end
+
+"""
+$docstring_str_extract_all
+"""
+function str_extract_all(string::AbstractString, pattern::Union{String, Regex})
+    # Convert pattern to Regex if it's a string
+    regex_pattern = isa(pattern, String) ? Regex(pattern) : pattern
+    
+    # Collect matches
+    matches = [String(m.match) for m in eachmatch(regex_pattern, string)]
+    
+    # Return missing if no matches found
+    return isempty(matches) ? missing : matches
+end
+

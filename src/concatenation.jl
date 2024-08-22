@@ -1,10 +1,20 @@
 """
 $docstring_str_c
 """
-function str_c(strings::AbstractVector; sep::AbstractString="")
-    strings = filter(!ismissing, strings)
-
-    return join(strings, sep)
+function str_c(strings::AbstractVector...; sep::AbstractString = "", collapse::AbstractString = "")
+    # Remove any `missing` values from each vector
+    filtered_strings = [filter(!ismissing, vec) for vec in strings]
+    
+    if length(strings) == 1
+        # If only one vector is provided, join its elements without a separator
+        return join(filtered_strings[1])
+    else
+        # Zip the vectors together and concatenate corresponding elements with `sep`
+        concatenated = [join(pair, sep) for pair in zip(filtered_strings...)]
+        
+        # Join the concatenated elements with `collapse`
+        return collapse == "" ? concatenated : join(concatenated, collapse)
+    end
 end
 
 """
