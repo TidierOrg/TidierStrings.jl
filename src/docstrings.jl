@@ -1,11 +1,11 @@
 const docstring_str_detect  =
 """
-    str_detect(column::String, pattern::Union{String, Regex})
+    str_detect(string::String, pattern::Union{String, Regex})
 
 Determine if a string contains a certain pattern.
 
 # Arguments
-- `column`: The string to check.
+- `string`: The string to check.
 pattern: A string or a regular expression to find within the string.
 The pattern can include special logic:
 
@@ -95,12 +95,12 @@ julia> str_flatten_comma(['a', 'b'], " and ")
 
 const docstring_str_replace  =
 """
-    str_replace(column::String, pattern::Union{String, Regex}, replacement::String)
+    str_replace(string::String, pattern::Union{String, Regex}, replacement::String)
 
 Replace the first occurrence of a pattern in a string with a specified string.
 
 Arguments
-column: The string in which to replace the pattern.
+string: The string in which to replace the pattern.
 pattern: A string or a regular expression to find within the string.
 replacement: The string to insert in place of the pattern.
 The pattern can include special logic:
@@ -110,6 +110,9 @@ Returns
 A new string with the first occurrence of the pattern replaced with the replacement.
 Examples
 ```jldoctest
+julia> str_replace("I Think You Should Leave is a great show", " ", "")
+"IThink You Should Leave is a great show"
+
 julia> str_replace("The sky is blue", "blue", "red")
 "The sky is red"
 
@@ -123,12 +126,12 @@ julia> str_replace("The sky is blue", "blue|sky", "red")
 
 const docstring_str_replace_all =
 """
-    str_replace_all(column::String, pattern::Union{String, Regex}, replacement::String)
+    str_replace_all(String::String, pattern::Union{String, Regex}, replacement::String)
 
 Replace all occurrences of a pattern in a string with a specified string.
 
 # Arguments
-- `column`: The string in which to replace the pattern.
+- `string`: The string in which to replace the pattern.
 - `pattern`: A string or a regular expression to find within the string.
 replacement: The string to insert in place of the pattern.
 The pattern can include special logic:
@@ -138,6 +141,9 @@ Returns
 A new string with all occurrences of the pattern replaced with the replacement.
 # Examples
 ```jldoctest
+julia> str_replace_all("I Think You Should Leave is a great show", " ", "")
+"IThinkYouShouldLeaveisagreatshow"
+
 julia> str_replace_all("The blue sky is blue", "blue", "red")
 "The red sky is red"
 
@@ -150,18 +156,18 @@ julia> str_replace_all("The blue sky is blue", "blue|sky", "red")
 """
 const docstring_str_count =
 """
-    str_count(column::String, pattern::Union{String, Regex})
+    str_count(string::String, pattern::Union{String, Regex})
 
 Count the number of non-overlapping occurrences of a pattern in a string.
 
 # Arguments
-- `column`: The string in which to count the pattern.
+- `string`: The string in which to count the pattern.
 - `pattern`: A string or a regular expression to find within the string.
 The pattern can include special logic:
 
 Use | to represent "or" (e.g., "red|blue" counts any string that contains "red" or "blue").
 Returns
-The count of non-overlapping occurrences of pattern in column.
+The count of non-overlapping occurrences of pattern in string.
 Examples
 ```jldoctest
 julia> str_count("The blue sky is blue", "blue")
@@ -177,14 +183,14 @@ julia> str_count("The blue sky is blue", "blue|sky")
 
 const docstring_str_squish  =
 """
-    str_squish(column::String)
+    str_squish(string::String)
 
 Squish a string, removing consecutive whitespace and replacing it with a single space, as well as removing leading and trailing whitespace.
 
 #Arguments
-`column`: The string to be squished.
+`string`: The string to be squished.
 Returns
-A squished version of column.
+A squished version of string.
 # Examples
 ```jldoctest
 julia> str_squish("  This    is a string   with   spaces   ")
@@ -198,15 +204,15 @@ julia> str_squish("  Leading and trailing spaces   ")
 
 const docstring_str_equal  =
 """
-    str_equal(column::String, pattern::Union{String, Regex})
+    str_equal(string::String, pattern::Union{String, Regex})
 
 Check if a string exactly equals to a pattern, or for regular expressions, if the pattern can match the entire string.
 
 # Arguments
-- `column`: The string to be checked.
+- `string`: The string to be checked.
 - `pattern`: The pattern to compare against. Can be a plain string or a Regex.
 Returns
-true if column equals to pattern (for plain strings) or if pattern can match the entire column (for Regex).
+true if string equals to pattern (for plain strings) or if pattern can match the entire string (for Regex).
 false otherwise.
 # Examples
 ```jldoctest
@@ -217,12 +223,12 @@ true
 
 const docstring_str_subset  =
 """
-    str_subset(column::String, pattern::Union{String, Regex})
+    str_subset(string::String, pattern::Union{String, Regex})
 
 Subset a string based on the presence of pattern. If the pattern exists within the string, the function will return the original string. If the pattern is not found within the string, the function will return an empty string.
 
 # Arguments
-- `column`: The string from which to extract the subset.
+- `string`: The string from which to extract the subset.
 - `pattern`: The pattern to search for within the string. Can be a plain string or a Regex.
 Returns
 The original string if the pattern is found within it, otherwise an empty string.
@@ -274,12 +280,12 @@ julia> str_to_upper("Hello World!")
 
 const docstring_str_remove_all  =
 """
-    str_remove_all(column::String, pattern::Union{String, Regex})
+    str_remove_all(string::String, pattern::Union{String, Regex})
 
 Remove all occurrences of the pattern in the string.
 
 # Arguments
-- `column`: The string from which the pattern should be removed.
+- `string`: The string from which the pattern should be removed.
 - `pattern`: The pattern which should be removed from the string. Can be a string or a regular expression.
 
 Returns
@@ -287,22 +293,22 @@ A string with all occurrences of the pattern removed.
 
 Examples
 ```jldoctest
-julia> column = "I love tidier strings, I love tidier strings"
+julia> string = "I love tidier strings, I love tidier strings"
 "I love tidier strings, I love tidier strings"
 
-julia> str_remove_all(column, " strings")
+julia> str_remove_all(string, " strings")
 "I love tidier , I love tidier "
 ```
 """
 
 const docstring_str_remove  =
 """
-    str_remove(column::String, pattern::Union{String, Regex})
+    str_remove(string::String, pattern::Union{String, Regex})
 
 Remove the first occurrence of the pattern in the string.
 
 Arguments
-- `column`: The string from which the pattern should be removed.
+- `string`: The string from which the pattern should be removed.
 - `pattern`: The pattern which should be removed from the string. Can be a string or a regular expression.
 
 Returns
@@ -310,10 +316,10 @@ A string with the first occurrence of the pattern removed.
 
 Examples
 ```jldoctest
-julia> column = "I love tidier strings strings"
+julia> string = "I love tidier strings strings"
 "I love tidier strings strings"
 
-julia> str_remove(column, " strings")
+julia> str_remove(string, " strings")
 "I love tidier strings"
 ```
 """
@@ -509,7 +515,7 @@ julia> word("Jane saw a cat", 2, -1)
 
 const docstring_str_starts =
 """
-    str_starts(string::Vector{T}, pattern::Union{AbstractString, Regex}; negate::Bool=false)
+    str_starts(string::String, pattern::Union{AbstractString, Regex}; negate::Bool=false)
 
 Check if a string starts with a certain pattern.
 
@@ -523,24 +529,26 @@ A vector of booleans indicating if the string starts with the pattern.
 
 Examples
 ```jldoctest
-julia> str_starts(["apple", "banana", "pear", "pineapple"], r"^p")  # [false, false, true, true]
-4-element Vector{Bool}:
+julia> str_starts.(["apple", "banana", "pear", "pineapple"], r"^p")  # [false, false, true, true]
+4-element BitVector:
  0
  0
  1
  1
-julia> str_starts(["apple", "banana", "pear", "pineapple"], r"^p", negate=true)  # [true, true, false, false]
-4-element Vector{Bool}:
+julia> str_starts.(["apple", "banana", "pear", "pineapple"], r"^p", negate=true)  # [true, true, false, false]
+4-element BitVector:
  1
  1
  0
  0
+julia> str_starts("apple pineapple", r"^p")
+false
 ```
 """
 
 const docstring_str_ends =
 """
-    str_ends(string::Vector{T}, pattern::Union{AbstractString, Regex}; negate::Bool=false)
+    str_ends(string::String, pattern::Union{AbstractString, Regex}; negate::Bool=false)
 
 Check if a string ends with a certain pattern.
 
@@ -554,14 +562,17 @@ A vector of booleans indicating if the string ends with the pattern.
 
 Examples
 ```jldoctest
-julia> str_ends(["apple", "banana", "pear", "pineapple"], r"e\$")  # [true, false, false, true]
-4-element Vector{Bool}:
+julia> str_ends("apple pineapple", r"^p")
+false
+
+julia> str_ends.(["apple", "banana", "pear", "pineapple"], r"e\$")  # [true, false, false, true]
+4-element BitVector:
  1
  0
  0
  1
-julia> str_ends(["apple", "banana", "pear", "pineapple"], r"e\$", negate=true)  # [false, true, true, false]
-4-element Vector{Bool}:
+julia> str_ends.(["apple", "banana", "pear", "pineapple"], r"e\$", negate=true)  # [false, true, true, false]
+4-element BitVector:
  0
  1
  1
@@ -700,7 +711,7 @@ julia> str_conv([0x48, 0x65, 0x6C, 0x6C, 0x6F, 0x2C, 0x20, 0x77, 0x6F, 0x72, 0x6
 
 const docstring_str_like = 
 """
-    str_like(string::AbstractVector{String}, pattern::String; ignore_case::Bool = true)
+    str_like(string, pattern::String; ignore_case::Bool = true)
 
 Detect a pattern in each string of the input vector using SQL-like pattern matching.
 
@@ -713,8 +724,11 @@ Returns
 A vector of booleans indicating if the string matches the pattern.
 
 ```jldoctest
-julia> str_like(["Hello", "world", "HELLO", "WORLD"], "H_llo")
-4-element Vector{Bool}:
+julia> str_like("hello", "h_llo")
+true
+
+julia> str_like.(["Hello", "world", "HELLO", "WORLD"], "H_llo")
+4-element BitVector:
  1
  0
  1
@@ -731,7 +745,7 @@ Joins a vector of strings into a single string.
 Arguments
 - `strings`: Input strings.
 - `sep`: The separator between the strings. Default is an empty string.
-
+-  `collapse` : If provided, it joins the concatenated strings with the specified collapse string. If not, it returns an array of the concatenated strings.
 Returns
 The joined string.
 
@@ -739,6 +753,14 @@ Examples
 ```jldoctest
 julia> str_c(["apple", "banana", "pear", "pineapple"])
 "applebananapearpineapple"
+
+julia> str_c(["Michigan", "Maryland"] , ["MI", "MD"], sep = ", ")
+2-element Vector{String}:
+ "Michigan, MI"
+ "Maryland, MD"
+
+julia> str_c(["Michigan", "Maryland"] , ["MI", "MD"], sep = ", ", collapse =  ";   ")
+"Michigan, MI;   Maryland, MD"
 ```
 """
 
@@ -766,5 +788,120 @@ text that should be
 wrapped based on the
 given width and
 breaking rules.
+```
+"""
+
+
+const docstring_str_pad = 
+"""
+    str_pad(string::AbstractString, width::Integer; side::String="right", pad::AbstractString=" ", use_width::Bool=true)   
+
+Pad a string to a certain width.
+
+# Returns
+The padded string.
+
+# Arguments
+- `string`: The string to be padded.
+- `width`: The width to pad the string to.
+- `side`: The side to pad the string on. Can be "left", "right", or "both".
+- `pad`: The string to use for padding.
+- `use_width`: Whether to use the width argument or the length of the string.  
+
+# Examples
+```jldoctest
+julia> str_pad("hello", 10)
+"hello     "
+
+julia> str_pad("hello", 10, side="left")
+"     hello"
+
+julia> str_pad("hello", 10, side="both")
+"  hello   "
+
+julia> str_pad("hello", 10, side="both", pad="*")
+"**hello***"
+```
+"""
+
+const docstring_str_extract_all = 
+"""
+str_extract_all(strings, pattern::Union{String, Regex})
+
+Extract all occurrences of a pattern from a string
+
+# Arguments
+- `strings`: A string to search for matches.
+- `pattern`: The pattern to search for, either as a String or a Regex.
+
+# Examples
+```jldoctest
+julia> str_extract_all.(["hello world", "hello universe hello", "goodbye"], r"hello")
+3-element Vector{Union{Missing, Vector{String}}}:
+["hello"]
+["hello", "hello"]
+missing
+
+julia> str_extract_all("hello world hello universe hello goodbye", r"hello")
+3-element Vector{String}:
+ "hello"
+ "hello"
+ "hello"
+"""
+
+const docstring_str_extract = 
+"""
+    str_extract(string, pattern::Union{String, Regex})
+
+Extract the first occurrence of a pattern from a string
+
+# Arguments
+- `strings`: A string to search for matches.
+- `pattern`: The pattern to search for, either as a String or a Regex.
+
+# Examples
+```jldoctest
+julia> str_extract("hello world hello universe hello goodbye", r"hello")
+"hello"
+
+julia> str_extract.(["hello world", "hello universe", "goodbye"], "hello")
+3-element Vector{Union{Missing, String}}:
+ "hello"
+ "hello"
+ missing
+ ```
+"""
+
+const docstring_str_trunc =
+"""
+str_trunc(string::AbstractString, width::Integer; side::String="right", ellipsis::AbstractString="...")
+
+Truncate a string to a fixed number of characters.
+
+# Arguments
+- `string`: Input string to be truncated.
+- `width`: Maximum width of the resulting string, including the ellipsis.
+- `side`: Side from which to truncate. Can be "right", "left", or "center". Defaults to "right".
+- `ellipsis`: String to indicate content has been removed. Defaults to "...".
+
+# Returns
+A truncated string of length less than or equal to `width`, including the ellipsis.
+
+# Examples
+```jldoctest
+julia> str_trunc("This is a long string", 10)
+"This is..."
+
+julia> str_trunc("This is a long string", 10, side="left")
+"...g string"
+
+julia> str_trunc("This is a long string", 10, side="center")
+"Thi...ring"
+
+julia> str_trunc("Short", 10)
+"Short"
+
+julia> str_trunc("This is a long string that needs to be truncated", 20, side = "right", ellipsis = "--")
+"This is a long str--"
 ```
 """

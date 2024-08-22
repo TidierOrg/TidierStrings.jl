@@ -14,7 +14,7 @@ end
 """
 $docstring_str_like
 """
-function str_like(string::AbstractVector{String}, pattern::String; ignore_case::Bool=true)
+function str_like(string::AbstractString, pattern::String; ignore_case::Bool=true)
     # Convert SQL LIKE pattern to Julia regex pattern
     julia_pattern = replace(pattern, r"[%_]" => s -> s == "%" ? ".*" : ".")
     julia_pattern = replace(julia_pattern, r"(\\%)" => "%")
@@ -24,8 +24,8 @@ function str_like(string::AbstractVector{String}, pattern::String; ignore_case::
     regex_flags = ignore_case ? "i" : ""
     regex_pattern = Regex("^" * julia_pattern * "\$", regex_flags)
 
-    # Apply the pattern to each string in the input vector
-    return [occursin(regex_pattern, str) for str in string]
+    # Apply the pattern to the input string
+    return occursin(regex_pattern, string)
 end
 
 """
@@ -54,4 +54,33 @@ function word(string::AbstractString, start_index::Int=1, end_index::Int=start_i
     end
 
     return words[start_index:end_index]
+end
+
+"""
+$docstring_str_trunc
+"""
+function str_trunc(string::AbstractString, width::Int; side::String = "right", ellipsis::AbstractString = "...")
+    # Handle cases where truncation is not needed
+    if length(string) <= width
+        return string
+    end
+    
+    # Adjust width to account for ellipsis
+    adjusted_width = max(width - length(ellipsis), 0)
+    
+    truncated_string = ""
+    
+    # Truncate based on the side argument
+    if side == "right"
+        truncated_string = string[1:adjusted_width] * ellipsis
+    elseif side == "left"
+        truncated_string = ellipsis * string[end-adjusted_width:end]
+    elseif side == "center"
+        half_width = div(adjusted_width, 2)
+        truncated_string = string[1:half_width] * ellipsis * string[end-half_width:end]
+    else
+        throw(ArgumentError("Invalid value for side. Must be :right, :left, or :center."))
+    end
+    
+    return truncated_string
 end
