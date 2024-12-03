@@ -111,7 +111,7 @@ end
 """
 $docstring_str_replace_all
 """
-function str_replace_all(column, pattern::Union{String, Regex}, replacement::String)
+function str_replace_all(column, pattern::Union{String,Regex}, replacement::String)
     if ismissing(column)
         return column
     end
@@ -119,7 +119,7 @@ function str_replace_all(column, pattern::Union{String, Regex}, replacement::Str
     regex_pattern = isa(pattern, String) ? Regex(pattern) : pattern
 
     column = replace(column, regex_pattern => replacement)
-    
+
     return replace(column, r"\s+" => " ")
 end
 
@@ -191,7 +191,7 @@ end
 """
 $docstring_str_starts
 """
-function str_starts(string::AbstractString, pattern::Union{AbstractString, Regex}; negate::Bool=false)::Bool
+function str_starts(string::AbstractString, pattern::Union{AbstractString,Regex}; negate::Bool=false)::Bool
     if ismissing(string)
         return (string)
     end
@@ -202,13 +202,13 @@ function str_starts(string::AbstractString, pattern::Union{AbstractString, Regex
     else
         error("Pattern must be either a Regex or an AbstractString.")
     end
-    
+
     return negate ? !match_result : match_result
 end
 """
 $docstring_str_ends
 """
-function str_ends(string::AbstractString, pattern::Union{AbstractString, Regex}; negate::Bool=false)::Bool
+function str_ends(string::AbstractString, pattern::Union{AbstractString,Regex}; negate::Bool=false)::Bool
     if ismissing(string)
         return (string)
     end
@@ -219,7 +219,7 @@ function str_ends(string::AbstractString, pattern::Union{AbstractString, Regex};
     else
         error("Pattern must be either a Regex or an AbstractString.")
     end
-    
+
     return negate ? !match_result : match_result
 end
 
@@ -278,10 +278,10 @@ end
 """
 $docstring_str_extract
 """
-function str_extract(input::AbstractString, pattern::Union{String, Regex})
+function str_extract(input::AbstractString, pattern::Union{String,Regex})
     # Convert pattern to Regex if it's a string
     regex_pattern = isa(pattern, String) ? Regex(pattern) : pattern
-    
+
     # Find the first match, return missing if none found
     m = match(regex_pattern, input)
     return m === nothing ? missing : m.match
@@ -290,14 +290,18 @@ end
 """
 $docstring_str_extract_all
 """
-function str_extract_all(string::AbstractString, pattern::Union{String, Regex})
+function str_extract_all(string::AbstractString, pattern::Union{String,Regex}; captures::Bool=false)
     # Convert pattern to Regex if it's a string
     regex_pattern = isa(pattern, String) ? Regex(pattern) : pattern
-    
-    # Collect matches
-    matches = [String(m.match) for m in eachmatch(regex_pattern, string)]
-    
+
+    # function to convert default 'nothing' when match unsuccessful to 'missing'
+    to_missing(l) = [ifelse(isnothing(c), missing, c) for c in l]
+
+    # Collect matches or captures
+    matches = captures ?
+              [to_missing(m.captures) for m in eachmatch(regex_pattern, string)] :
+              [String(m.match) for m in eachmatch(regex_pattern, string)]
+
     # Return missing if no matches found
     return isempty(matches) ? missing : matches
 end
-
