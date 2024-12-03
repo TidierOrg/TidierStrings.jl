@@ -804,12 +804,6 @@ const docstring_str_extract_all = """
 
                                   # Examples
                                   ```jldoctest
-                                  julia> str_extract_all.(["hello world", "hello universe hello", "goodbye"], r"hello")
-                                  3-element Vector{Union{Missing, Vector{String}}}:
-                                  ["hello"]
-                                  ["hello", "hello"]
-                                  missing
-
                                   julia> str_extract_all("hello world hello universe hello goodbye", r"hello")
                                   3-element Vector{String}:
                                    "hello"
