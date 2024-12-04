@@ -290,12 +290,17 @@ end
 """
 $docstring_str_extract_all
 """
-function str_extract_all(string::AbstractString, pattern::Union{String,Regex})
+function str_extract_all(string::AbstractString, pattern::Union{String,Regex}; captures::Bool=false)
     # Convert pattern to Regex if it's a string
     regex_pattern = isa(pattern, String) ? Regex(pattern) : pattern
 
-    # Collect matches
-    matches = [String(m.match) for m in eachmatch(regex_pattern, string)]
+    # function to convert default 'nothing' when match unsuccessful to 'missing'
+    to_missing(l) = [ifelse(isnothing(c), missing, c) for c in l]
+
+    # Collect matches or captures
+    matches = captures ?
+              [to_missing(m.captures) for m in eachmatch(regex_pattern, string)] :
+              [String(m.match) for m in eachmatch(regex_pattern, string)]
 
     # Return missing if no matches found
     return isempty(matches) ? missing : matches
