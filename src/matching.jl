@@ -1,7 +1,7 @@
 """
 $docstring_str_count
 """
-function str_count(column, pattern::Union{String,Regex})
+function str_count(column, pattern::Union{String,Regex}; overlap::Bool=false)
     if ismissing(column)
         return (column)
     end
@@ -11,7 +11,7 @@ function str_count(column, pattern::Union{String,Regex})
     end
 
     # Count the number of matches for the regular expression
-    return length(collect(eachmatch(pattern, column)))
+    return length(collect(eachmatch(pattern, column, overlap=overlap)))
 end
 
 """
