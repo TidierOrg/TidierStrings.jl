@@ -1,7 +1,7 @@
 name = "TidierStrings"
 uuid = "248e6834-d0f8-40ef-8fbb-8e711d883e9c"
 authors = ["Daniel Rizk && Contributors"]
-version = "0.2.5"
+version = "0.2.6"
 
 [deps]
 StringEncodings = "69024149-9ee7-55f6-a4c4-859efe599b68"
