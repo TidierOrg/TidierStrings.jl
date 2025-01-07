@@ -1,14 +1,14 @@
 name = "TidierStrings"
 uuid = "248e6834-d0f8-40ef-8fbb-8e711d883e9c"
 authors = ["Daniel Rizk && Contributors"]
-version = "0.2.6"
+version = "0.2.7"
 
 [deps]
 StringEncodings = "69024149-9ee7-55f6-a4c4-859efe599b68"
 
 [compat]
 StringEncodings = "0.3"
-julia = "1.9"
+julia = "1.10"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
