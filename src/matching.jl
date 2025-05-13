@@ -81,101 +81,110 @@ end
 """
 $docstring_str_replace
 """
-function str_replace(column, pattern::Union{String,Regex}, replacement::String)
-    if ismissing(column)
-        return (column)
-    end
-
-    if pattern isa String
-        patterns = split(pattern, '|')
-        first_occurrences = [(p, findfirst(Regex(p), column)) for p in patterns]
-        # Filter out patterns that were not found
-        found_occurrences = filter(x -> x[2] !== nothing, first_occurrences)
-        # If none of the patterns are found, return the original column
-        if isempty(found_occurrences)
-            return column
-        end
-        # Get the first pattern among the found patterns
-        first_pattern = sort(found_occurrences, by=x -> x[2].start)[1][1]
-        # Replace the first occurrence of the first found pattern
-        column = replace(column, Regex(first_pattern) => replacement, count=1)
-    else
-        # For regular expressions, directly use replace
-        column = replace(column, pattern => replacement, count=1) # Only replace the first occurrence
-    end
-    # Replace multiple consecutive spaces with a single space
-    column = replace(column, r"\s+" => " ")
-    return column
-end
-
-"""
-$docstring_str_replace_all
-"""
-function str_replace_all(column, pattern::Union{String,Regex}, replacement::String)
+function str_replace(column, pattern::Union{String, Regex}, replacement::String)
     if ismissing(column)
         return column
     end
 
-    regex_pattern = isa(pattern, String) ? Regex(pattern) : pattern
+    if pattern isa String
+        # split on '|' and find which subpattern occurs first
+        patterns = split(pattern, '|')
+        occurrences = [(p, findfirst(p, column)) for p in patterns]
+        occurrences = filter(x -> x[2] !== nothing, occurrences)
+        if isempty(occurrences)
+            result = column
+        else
+            first_pattern = sort(occurrences, by = x -> x[2].start)[1][1]
+            result = replace(column, Regex(first_pattern) => replacement, count=1)
+        end
+    else
+        # for a Regex pattern, just replace the first match
+        result = replace(column, pattern => replacement, count=1)
+    end
 
-    column = replace(column, regex_pattern => replacement)
-
-    return replace(column, r"\s+" => " ")
+    # collapse multiple spaces into one
+    result = replace(result, r"\s+" => " ")
+    return result
 end
+
+
+
+"""
+$docstring_str_replace_all
+"""
+function str_replace_all(column, pattern::Union{String, Regex}, replacement::String)
+    if ismissing(column)
+        return column
+    end
+
+    if pattern isa String
+        result = column
+        for p in split(pattern, '|')
+            result = replace(result, p => replacement)
+        end
+    else
+        result = replace(column, pattern => replacement)
+    end
+
+    return replace(result, r"\s+" => " ")
+end
+
 
 
 
 """
 $docstring_str_remove
 """
-function str_remove(column, pattern::Union{String,Regex})
+function str_remove(column, pattern::Union{String, Regex})
     if ismissing(column)
-        return (column)
+        return column
     end
 
-    if pattern isa String
-        patterns = split(pattern, '|')
-        first_occurrences = [(p, findfirst(Regex(p), column)) for p in patterns]
-        # Filter out patterns that were not found
-        found_occurrences = filter(x -> x[2] !== nothing, first_occurrences)
-        # If none of the patterns are found, return the original column
-        if isempty(found_occurrences)
-            return column
+    result = if pattern isa String
+        earliest_pat = nothing
+        earliest_pos = typemax(Int)
+        for p in split(pattern, '|')
+            idx = findfirst(p, column)
+            if idx !== nothing
+                pos = idx isa UnitRange ? first(idx) : idx
+                if pos < earliest_pos
+                    earliest_pos = pos
+                    earliest_pat = p
+                end
+            end
         end
-        # Get the first pattern among the found patterns
-        first_pattern = sort(found_occurrences, by=x -> x[2].start)[1][1]
-        # Remove the first occurrence of the first found pattern
-        column = replace(column, Regex(first_pattern) => "", count=1)
+        earliest_pat === nothing ? column : replace(column, earliest_pat => "", count=1)
     else
-        # For regular expressions, directly use replace
-        column = replace(column, pattern => "", count=1) # Only remove the first occurrence
+        replace(column, pattern => "", count=1)
     end
-    # Replace multiple consecutive spaces with a single space
-    column = replace(column, r"\s+" => " ")
-    return column
+
+    return replace(result, r"\s+" => " ")
 end
+
+
 
 """
 $docstring_str_remove_all
 """
-function str_remove_all(column, pattern::Union{String,Regex})
+function str_remove_all(column, pattern::Union{String, Regex})
     if ismissing(column)
-        return (column)
+        return column
     end
 
     if pattern isa String
-        patterns = split(pattern, '|')
+        patterns = (split(pattern, '|'))
         for p in patterns
-            column = replace(column, Regex(strip(p)) => "")
+            column = replace(column, p => "")
         end
     else
-        # For regular expressions, directly use replace
         column = replace(column, pattern => "")
     end
-    # Replace multiple consecutive spaces with a single space
-    column = replace(column, r"\s+" => " ")
+
+    # collapse multiple spaces into one
+    #column = replace(column, r"\s+" => " ")
     return column
 end
+
 
 #"""
 #$docstring_str_split
@@ -278,30 +287,51 @@ end
 """
 $docstring_str_extract
 """
-function str_extract(input::AbstractString, pattern::Union{String,Regex})
-    # Convert pattern to Regex if it's a string
-    regex_pattern = isa(pattern, String) ? Regex(pattern) : pattern
-
-    # Find the first match, return missing if none found
-    m = match(regex_pattern, input)
-    return m === nothing ? missing : m.match
+function str_extract(input::AbstractString, pattern::Union{String, Regex})
+    if pattern isa String
+        idx = findfirst(pattern, input)
+        return idx === nothing ? missing : input[idx]
+    else
+        m = match(pattern, input)
+        return m === nothing ? missing : m.match
+    end
 end
 
 """
 $docstring_str_extract_all
 """
-function str_extract_all(string::AbstractString, pattern::Union{String,Regex}; captures::Bool=false)
-    # Convert pattern to Regex if it's a string
-    regex_pattern = isa(pattern, String) ? Regex(pattern) : pattern
+function str_extract_all(string::AbstractString, pattern::Union{String, Regex}; captures::Bool=false)
+    if ismissing(string)
+        return missing
+    end
 
-    # function to convert default 'nothing' when match unsuccessful to 'missing'
-    to_missing(l) = [ifelse(isnothing(c), missing, c) for c in l]
-
-    # Collect matches or captures
-    matches = captures ?
-              [to_missing(m.captures) for m in eachmatch(regex_pattern, string)] :
-              [String(m.match) for m in eachmatch(regex_pattern, string)]
-
-    # Return missing if no matches found
-    return isempty(matches) ? missing : matches
+    if pattern isa String
+        patterns = split(pattern, '|')
+        recs = Tuple{Int,String}[]
+        for p in patterns
+            plen = length(p)
+            startpos = 1
+            while true
+                idx = findnext(p, string, startpos)
+                idx === nothing && break
+                pos = idx isa UnitRange ? first(idx) : idx
+                push!(recs, (pos, String(string[pos:pos+plen-1])))
+                startpos = pos + plen
+            end
+        end
+        isempty(recs) && return missing
+        sort!(recs, by = x -> x[1])
+        return [match for (_, match) in recs]
+    else
+        if captures
+            to_missing(l) = [ifelse(isnothing(c), missing, c) for c in l]
+            matches = [to_missing(m.captures) for m in eachmatch(pattern, string)]
+        else
+            matches = [String(m.match) for m in eachmatch(pattern, string)]
+        end
+        return isempty(matches) ? missing : matches
+    end
 end
+
+
+

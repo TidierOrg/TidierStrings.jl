@@ -284,11 +284,11 @@ const docstring_str_remove_all = """
 
                                  Examples
                                  ```jldoctest
-                                 julia> string = "I love tidier strings, I love tidier strings"
-                                 "I love tidier strings, I love tidier strings"
+                                 julia> string = " tidier strings, tidier strings"
+                                 " tidier strings, tidier strings"
 
                                  julia> str_remove_all(string, " strings")
-                                 "I love tidier , I love tidier "
+                                 " tidier, tidier"
                                  ```
                                  """
 
