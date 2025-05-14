@@ -1,18 +1,31 @@
 """
 $docstring_str_count
 """
-function str_count(column, pattern::Union{String,Regex}; overlap::Bool=false)
+function str_count(column, pattern::Union{String, Regex}; overlap::Bool=false)
     if ismissing(column)
-        return (column)
+        return column
     end
 
-    if pattern isa String
-        pattern = Regex(pattern) # treat pattern as regular expression
+    if pattern isa Regex
+        return length(collect(eachmatch(pattern, column; overlap=overlap)))
+    else
+        total = 0
+        for p in split(pattern, '|')
+            pos = firstindex(column)
+            plen = lastindex(p) - firstindex(p) + 1
+            while true
+                idx = findnext(p, column, pos)
+                idx === nothing && break
+                total += 1
+                start = idx isa UnitRange ? first(idx) : idx
+                pos = overlap ? start + 1 : start + plen
+            end
+        end
+        return total
     end
-
-    # Count the number of matches for the regular expression
-    return length(collect(eachmatch(pattern, column, overlap=overlap)))
 end
+
+
 
 """
 $docstring_str_detect
@@ -87,25 +100,28 @@ function str_replace(column, pattern::Union{String, Regex}, replacement::String)
     end
 
     if pattern isa String
-        # split on '|' and find which subpattern occurs first
-        patterns = split(pattern, '|')
-        occurrences = [(p, findfirst(p, column)) for p in patterns]
-        occurrences = filter(x -> x[2] !== nothing, occurrences)
-        if isempty(occurrences)
-            result = column
-        else
-            first_pattern = sort(occurrences, by = x -> x[2].start)[1][1]
-            result = replace(column, Regex(first_pattern) => replacement, count=1)
+        # split on '|' and find which literal subpattern occurs first
+        earliest_pat = nothing
+        earliest_pos = typemax(Int)
+        for p in split(pattern, '|')
+            idx = findfirst(p, column)
+            if idx !== nothing
+                pos = idx isa UnitRange ? first(idx) : idx
+                if pos < earliest_pos
+                    earliest_pos = pos
+                    earliest_pat = p
+                end
+            end
         end
+        result = earliest_pat === nothing ? column :
+                 replace(column, earliest_pat => replacement, count=1)
     else
-        # for a Regex pattern, just replace the first match
         result = replace(column, pattern => replacement, count=1)
     end
 
-    # collapse multiple spaces into one
-    result = replace(result, r"\s+" => " ")
-    return result
+    return replace(result, r"\s+" => " ")
 end
+
 
 
 
